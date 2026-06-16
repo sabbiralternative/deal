@@ -1,0 +1,166 @@
+.page {
+  max-width: 100%;
+  margin: 20px auto;
+  padding: 10px;
+}
+
+/* Bonus Card */
+.bonus-card {
+  background: linear-gradient(180deg, #6b6767, #3b3939);
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.bonus-box {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 10px;
+  border-radius: 8px;
+  color: white;
+  z-index: 99999;
+}
+
+.bonus-box .label {
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 0px;
+}
+
+.bonus-box .amount {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 0px;
+}
+
+.bonus-actions {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  gap: 6px;
+}
+
+.deposit {
+  background: #4b4b4b;
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.clock {
+  background: #4b4b4b;
+  border: none;
+  color: white;
+  padding: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Lossback */
+.lossback {
+  margin-top: 12px;
+  background: linear-gradient(90deg, #006a2e, #000000);
+  padding: 8px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.lossback img {
+  height: 40px;
+}
+.lossback-title {
+  color: white;
+  font-size: 12px;
+}
+
+.lossback-info {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.5);
+  color: #b5ff00;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 10px;
+}
+
+.view-all {
+  background: #2ecc71;
+  border: none;
+  color: black;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Gift Card */
+.gift-card {
+  margin-top: 12px;
+  background: linear-gradient(90deg, #6f2c8f, #9b1d3f);
+  border-radius: 10px;
+  padding: 12px;
+  color: white;
+}
+
+.gift-top {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.gift-icon {
+  font-size: 32px;
+}
+
+.gift-icon img {
+  height: 40px;
+}
+
+.gift-text h3 {
+  margin: 0;
+  font-size: 14px;
+}
+
+.gift-text p {
+  margin: 4px 0 0;
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+.gift-input {
+  position: relative;
+}
+
+.code {
+  width: 100%;
+  margin-top: 10px;
+  background: rgba(174, 174, 174, 0.2);
+  color: #000000;
+  border-radius: 6px;
+  padding: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.redeem {
+  right: 0px;
+  top: 0px;
+  position: absolute;
+  background: #a9243d;
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}

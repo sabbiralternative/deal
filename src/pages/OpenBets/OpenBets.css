@@ -1,0 +1,161 @@
+/* OpenBets.css */
+
+/* ── Page Wrapper ── */
+.openbets-page {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .openbets-page {
+    margin-top: 0;
+  }
+}
+
+/* ── Section Wrapper ── */
+.openbets-section {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+/* ── Inner Column ── */
+.openbets-col {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 4px;
+}
+
+/* ── Toggle Header ── */
+.openbets-toggle {
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--theme-primary);
+  border-radius: 4px;
+}
+
+.openbets-toggle-label {
+  color: white;
+  font-size: 12px;
+}
+
+.openbets-toggle-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+/* ── Bets List ── */
+.openbets-list-wrap {
+  width: 100%;
+  transform-origin: top;
+}
+
+.openbets-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+/* ── Single Bet Card ── */
+.openbets-card {
+  background-color: #fff;
+  border-radius: 6px;
+  width: 100%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+}
+
+/* Card rows share a top border to replicate divide-y */
+.openbets-card > * + * {
+  border-top: 1px solid var(--color-divider, rgba(0, 0, 0, 0.08));
+}
+
+/* ── Event Header Row ── */
+.openbets-card-header {
+  font-weight: 600;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  cursor: pointer;
+}
+
+.openbets-card-title {
+  font-weight: 500;
+  text-decoration: underline;
+  text-transform: capitalize;
+  font-size: 14px;
+}
+
+.openbets-card-title--back {
+  color: var(--color-text-change-animation-back);
+}
+
+.openbets-card-title--lay {
+  color: var(--color-text-change-animation-lay);
+}
+
+/* ── Nation / Sport Row ── */
+.openbets-card-meta {
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: var(--color-text-ternary);
+  text-transform: uppercase;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.openbets-card-nation {
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.openbets-card-sport {
+  font-weight: 400;
+  font-size: 12px;
+}
+
+/* ── Date Row ── */
+.openbets-card-date {
+  font-size: 12px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  text-align: center;
+  background-color: var(--color-bg-ternary8);
+
+  font-weight: 400;
+  border-radius: 0 0 6px 6px;
+}
+
+/* ── Empty State ── */
+.openbets-empty-wrap {
+  width: 100%;
+  transform-origin: top;
+}
+
+.openbets-empty {
+  width: 100%;
+  font-weight: 500;
+  font-size: 14px;
+  background-color: var(--color-bg-quaternary);
+  border-radius: 4px;
+  padding: 12px 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  color: var(--color-text-ternary);
+}

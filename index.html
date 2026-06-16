@@ -1,0 +1,1331 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link rel="stylesheet" crossorigin="" href="/src/assets/css/app.css" />
+    <link
+      rel="stylesheet"
+      crossorigin=""
+      href="/src/assets/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" crossorigin="" href="/src/assets/css/custom.css" />
+    <link
+      rel="stylesheet"
+      crossorigin=""
+      href="/src/assets/css/dataTables.bootstrap5.css"
+    />
+    <link
+      rel="stylesheet"
+      crossorigin=""
+      href="/src/assets/css/responsive.bootstrap5.css"
+    />
+    <link
+      rel="stylesheet"
+      crossorigin=""
+      href="/src/assets/css/styles.df0c6dbf26503fd86990.css"
+    />
+
+    <link
+      rel="stylesheet"
+      crossorigin=""
+      href="/src/assets/css/style_a23.css"
+    />
+    <style type="text/css">
+      @font-face {
+        font-family: "Manrope";
+        font-style: normal;
+        font-weight: 200 800;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/manrope/v20/xn7gYHE41ni1AdIRggqxSvfedN62Zw.woff2)
+          format("woff2");
+        unicode-range:
+          U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F,
+          U+FE2E-FE2F;
+      }
+      @font-face {
+        font-family: "Manrope";
+        font-style: normal;
+        font-weight: 200 800;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/manrope/v20/xn7gYHE41ni1AdIRggOxSvfedN62Zw.woff2)
+          format("woff2");
+        unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+      }
+      @font-face {
+        font-family: "Manrope";
+        font-style: normal;
+        font-weight: 200 800;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/manrope/v20/xn7gYHE41ni1AdIRggSxSvfedN62Zw.woff2)
+          format("woff2");
+        unicode-range:
+          U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1,
+          U+03A3-03FF;
+      }
+      @font-face {
+        font-family: "Manrope";
+        font-style: normal;
+        font-weight: 200 800;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/manrope/v20/xn7gYHE41ni1AdIRggixSvfedN62Zw.woff2)
+          format("woff2");
+        unicode-range:
+          U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1,
+          U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329,
+          U+1EA0-1EF9, U+20AB;
+      }
+      @font-face {
+        font-family: "Manrope";
+        font-style: normal;
+        font-weight: 200 800;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/manrope/v20/xn7gYHE41ni1AdIRggmxSvfedN62Zw.woff2)
+          format("woff2");
+        unicode-range:
+          U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+          U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+          U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+      }
+      @font-face {
+        font-family: "Manrope";
+        font-style: normal;
+        font-weight: 200 800;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/manrope/v20/xn7gYHE41ni1AdIRggexSvfedN4.woff2)
+          format("woff2");
+        unicode-range:
+          U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+          U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+          U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      @font-face {
+        font-family: "Noto Sans";
+        font-style: italic;
+        font-weight: 100 900;
+        font-stretch: 100%;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/notosans/v42/o-0ZIpQlx3QUlC5A4PNr4C5OaxRsfNNlKbCePevttHOmHS91ixg0.woff2)
+          format("woff2");
+        unicode-range:
+          U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F,
+          U+FE2E-FE2F;
+      }
+      @font-face {
+        font-family: "Noto Sans";
+        font-style: italic;
+        font-weight: 100 900;
+        font-stretch: 100%;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/notosans/v42/o-0ZIpQlx3QUlC5A4PNr4C5OaxRsfNNlKbCePevtvXOmHS91ixg0.woff2)
+          format("woff2");
+        unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+      }
+      @font-face {
+        font-family: "Noto Sans";
+        font-style: italic;
+        font-weight: 100 900;
+        font-stretch: 100%;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/notosans/v42/o-0ZIpQlx3QUlC5A4PNr4C5OaxRsfNNlKbCePevtuHOmHS91ixg0.woff2)
+          format("woff2");
+        unicode-range:
+          U+0900-097F, U+1CD0-1CF9, U+200C-200D, U+20A8, U+20B9, U+20F0, U+25CC,
+          U+A830-A839, U+A8E0-A8FF, U+11B00-11B09;
+      }
+      @font-face {
+        font-family: "Noto Sans";
+        font-style: italic;
+        font-weight: 100 900;
+        font-stretch: 100%;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/notosans/v42/o-0ZIpQlx3QUlC5A4PNr4C5OaxRsfNNlKbCePevttXOmHS91ixg0.woff2)
+          format("woff2");
+        unicode-range: U+1F00-1FFF;
+      }
+      @font-face {
+        font-family: "Noto Sans";
+        font-style: italic;
+        font-weight: 100 900;
+        font-stretch: 100%;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/notosans/v42/o-0ZIpQlx3QUlC5A4PNr4C5OaxRsfNNlKbCePevtunOmHS91ixg0.woff2)
+          format("woff2");
+        unicode-range:
+          U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1,
+          U+03A3-03FF;
+      }
+      @font-face {
+        font-family: "Noto Sans";
+        font-style: italic;
+        font-weight: 100 900;
+        font-stretch: 100%;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/notosans/v42/o-0ZIpQlx3QUlC5A4PNr4C5OaxRsfNNlKbCePevttnOmHS91ixg0.woff2)
+          format("woff2");
+        unicode-range:
+          U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1,
+          U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329,
+          U+1EA0-1EF9, U+20AB;
+      }
+      @font-face {
+        font-family: "Noto Sans";
+        font-style: italic;
+        font-weight: 100 900;
+        font-stretch: 100%;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/notosans/v42/o-0ZIpQlx3QUlC5A4PNr4C5OaxRsfNNlKbCePevtt3OmHS91ixg0.woff2)
+          format("woff2");
+        unicode-range:
+          U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+          U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+          U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+      }
+      @font-face {
+        font-family: "Noto Sans";
+        font-style: italic;
+        font-weight: 100 900;
+        font-stretch: 100%;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/notosans/v42/o-0ZIpQlx3QUlC5A4PNr4C5OaxRsfNNlKbCePevtuXOmHS91iw.woff2)
+          format("woff2");
+        unicode-range:
+          U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+          U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+          U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      @font-face {
+        font-family: "Noto Sans";
+        font-style: normal;
+        font-weight: 100 900;
+        font-stretch: 100%;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/notosans/v42/o-0bIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjc5aPdu3mhPy1Fig.woff2)
+          format("woff2");
+        unicode-range:
+          U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F,
+          U+FE2E-FE2F;
+      }
+      @font-face {
+        font-family: "Noto Sans";
+        font-style: normal;
+        font-weight: 100 900;
+        font-stretch: 100%;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/notosans/v42/o-0bIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjc5ardu3mhPy1Fig.woff2)
+          format("woff2");
+        unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+      }
+      @font-face {
+        font-family: "Noto Sans";
+        font-style: normal;
+        font-weight: 100 900;
+        font-stretch: 100%;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/notosans/v42/o-0bIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjc5a_du3mhPy1Fig.woff2)
+          format("woff2");
+        unicode-range:
+          U+0900-097F, U+1CD0-1CF9, U+200C-200D, U+20A8, U+20B9, U+20F0, U+25CC,
+          U+A830-A839, U+A8E0-A8FF, U+11B00-11B09;
+      }
+      @font-face {
+        font-family: "Noto Sans";
+        font-style: normal;
+        font-weight: 100 900;
+        font-stretch: 100%;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/notosans/v42/o-0bIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjc5aLdu3mhPy1Fig.woff2)
+          format("woff2");
+        unicode-range: U+1F00-1FFF;
+      }
+      @font-face {
+        font-family: "Noto Sans";
+        font-style: normal;
+        font-weight: 100 900;
+        font-stretch: 100%;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/notosans/v42/o-0bIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjc5a3du3mhPy1Fig.woff2)
+          format("woff2");
+        unicode-range:
+          U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1,
+          U+03A3-03FF;
+      }
+      @font-face {
+        font-family: "Noto Sans";
+        font-style: normal;
+        font-weight: 100 900;
+        font-stretch: 100%;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/notosans/v42/o-0bIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjc5aHdu3mhPy1Fig.woff2)
+          format("woff2");
+        unicode-range:
+          U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1,
+          U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329,
+          U+1EA0-1EF9, U+20AB;
+      }
+      @font-face {
+        font-family: "Noto Sans";
+        font-style: normal;
+        font-weight: 100 900;
+        font-stretch: 100%;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/notosans/v42/o-0bIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjc5aDdu3mhPy1Fig.woff2)
+          format("woff2");
+        unicode-range:
+          U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+          U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+          U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+      }
+      @font-face {
+        font-family: "Noto Sans";
+        font-style: normal;
+        font-weight: 100 900;
+        font-stretch: 100%;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/notosans/v42/o-0bIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjc5a7du3mhPy0.woff2)
+          format("woff2");
+        unicode-range:
+          U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+          U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+          U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+    </style>
+    <style type="text/css">
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 300;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7W0Q5n-wU.woff2)
+          format("woff2");
+        unicode-range:
+          U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F,
+          U+FE2E-FE2F;
+      }
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 300;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7W0Q5n-wU.woff2)
+          format("woff2");
+        unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+      }
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 300;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7W0Q5n-wU.woff2)
+          format("woff2");
+        unicode-range: U+1F00-1FFF;
+      }
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 300;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7W0Q5n-wU.woff2)
+          format("woff2");
+        unicode-range:
+          U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1,
+          U+03A3-03FF;
+      }
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 300;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7W0Q5n-wU.woff2)
+          format("woff2");
+        unicode-range:
+          U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1,
+          U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329,
+          U+1EA0-1EF9, U+20AB;
+      }
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 300;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7W0Q5n-wU.woff2)
+          format("woff2");
+        unicode-range:
+          U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+          U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+          U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+      }
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 300;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2)
+          format("woff2");
+        unicode-range:
+          U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+          U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+          U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7W0Q5n-wU.woff2)
+          format("woff2");
+        unicode-range:
+          U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F,
+          U+FE2E-FE2F;
+      }
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7W0Q5n-wU.woff2)
+          format("woff2");
+        unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+      }
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7W0Q5n-wU.woff2)
+          format("woff2");
+        unicode-range: U+1F00-1FFF;
+      }
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7W0Q5n-wU.woff2)
+          format("woff2");
+        unicode-range:
+          U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1,
+          U+03A3-03FF;
+      }
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7W0Q5n-wU.woff2)
+          format("woff2");
+        unicode-range:
+          U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1,
+          U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329,
+          U+1EA0-1EF9, U+20AB;
+      }
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7W0Q5n-wU.woff2)
+          format("woff2");
+        unicode-range:
+          U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+          U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+          U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+      }
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2)
+          format("woff2");
+        unicode-range:
+          U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+          U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+          U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7W0Q5n-wU.woff2)
+          format("woff2");
+        unicode-range:
+          U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F,
+          U+FE2E-FE2F;
+      }
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7W0Q5n-wU.woff2)
+          format("woff2");
+        unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+      }
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7W0Q5n-wU.woff2)
+          format("woff2");
+        unicode-range: U+1F00-1FFF;
+      }
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7W0Q5n-wU.woff2)
+          format("woff2");
+        unicode-range:
+          U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1,
+          U+03A3-03FF;
+      }
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7W0Q5n-wU.woff2)
+          format("woff2");
+        unicode-range:
+          U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1,
+          U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329,
+          U+1EA0-1EF9, U+20AB;
+      }
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7W0Q5n-wU.woff2)
+          format("woff2");
+        unicode-range:
+          U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+          U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+          U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+      }
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2)
+          format("woff2");
+        unicode-range:
+          U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+          U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+          U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css"
+    />
+    <style>
+      :root {
+        --bs-blue: #3b7ddd;
+        --bs-indigo: #0a0a0a;
+        --bs-purple: #6f42c1;
+        --bs-pink: #e83e8c;
+        --bs-red: #dc3545;
+        --bs-orange: #fd7e14;
+        --bs-yellow: #fcb92c;
+        --bs-green: #1cbb8c;
+        --bs-teal: #20c997;
+        --bs-cyan: #17a2b8;
+        --bs-black: #000;
+        --bs-white: #fff;
+        --bs-gray: #6c757d;
+        --bs-gray-dark: #343a40;
+        --bs-gray-100: #f8f9fa;
+        --bs-gray-200: #e9ecef;
+        --bs-gray-300: #dee2e6;
+        --bs-gray-400: #ced4da;
+        --bs-gray-500: #adb5bd;
+        --bs-gray-600: #6c757d;
+        --bs-gray-700: #495057;
+        --bs-gray-800: #343a40;
+        --bs-gray-900: #212529;
+        --bs-primary: #3b7ddd;
+        --bs-secondary: #6c757d;
+        --bs-success: #1cbb8c;
+        --bs-info: #17a2b8;
+        --bs-warning: #fcb92c;
+        --bs-danger: #dc3545;
+        --bs-light: #f5f7fb;
+        --bs-dark: #212529;
+        --bs-primary-rgb: 59, 125, 221;
+        --bs-secondary-rgb: 108, 117, 125;
+        --bs-success-rgb: 28, 187, 140;
+        --bs-info-rgb: 23, 162, 184;
+        --bs-warning-rgb: 252, 185, 44;
+        --bs-danger-rgb: 220, 53, 69;
+        --bs-light-rgb: 245, 247, 251;
+        --bs-dark-rgb: 33, 37, 41;
+        --bs-primary-text-emphasis: #183258;
+        --bs-secondary-text-emphasis: #2b2f32;
+        --bs-success-text-emphasis: #0b4b38;
+        --bs-info-text-emphasis: #09414a;
+        --bs-warning-text-emphasis: #654a12;
+        --bs-danger-text-emphasis: #58151c;
+        --bs-light-text-emphasis: #495057;
+        --bs-dark-text-emphasis: #495057;
+        --bs-primary-bg-subtle: #d8e5f8;
+        --bs-secondary-bg-subtle: #e2e3e5;
+        --bs-success-bg-subtle: #d2f1e8;
+        --bs-info-bg-subtle: #d1ecf1;
+        --bs-warning-bg-subtle: #fef1d5;
+        --bs-danger-bg-subtle: #f8d7da;
+        --bs-light-bg-subtle: #fcfcfd;
+        --bs-dark-bg-subtle: #ced4da;
+        --bs-primary-border-subtle: #b1cbf1;
+        --bs-secondary-border-subtle: #c4c8cb;
+        --bs-success-border-subtle: #a4e4d1;
+        --bs-info-border-subtle: #a2dae3;
+        --bs-warning-border-subtle: #fee3ab;
+        --bs-danger-border-subtle: #f1aeb5;
+        --bs-light-border-subtle: #e9ecef;
+        --bs-dark-border-subtle: #adb5bd;
+        --bs-white-rgb: 255, 255, 255;
+        --bs-black-rgb: 0, 0, 0;
+        --bs-font-sans-serif:
+          "Inter", "Helvetica Neue", Arial, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Roboto, "Noto Sans", sans-serif, "Apple Color Emoji",
+          "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        --bs-font-monospace:
+          SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+          "Courier New", monospace;
+        --bs-gradient: linear-gradient(
+          180deg,
+          hsla(0, 0%, 100%, 0.15),
+          hsla(0, 0%, 100%, 0)
+        );
+        --bs-body-font-family: var(--bs-font-sans-serif);
+        --bs-body-font-size: 0.875rem;
+        --bs-body-font-weight: 400;
+        --bs-body-line-height: 1.5;
+        --bs-body-color: #495057;
+        --bs-body-color-rgb: 73, 80, 87;
+        --bs-body-bg: #f5f7fb;
+        --bs-body-bg-rgb: 245, 247, 251;
+        --bs-emphasis-color: #000;
+        --bs-emphasis-color-rgb: 0, 0, 0;
+        --bs-secondary-color: rgba(73, 80, 87, 0.75);
+        --bs-secondary-color-rgb: 73, 80, 87;
+        --bs-secondary-bg: #e9ecef;
+        --bs-secondary-bg-rgb: 233, 236, 239;
+        --bs-tertiary-color: rgba(73, 80, 87, 0.5);
+        --bs-tertiary-color-rgb: 73, 80, 87;
+        --bs-tertiary-bg: #f8f9fa;
+        --bs-tertiary-bg-rgb: 248, 249, 250;
+        --bs-heading-color: #000;
+        --bs-link-color: #3b7ddd;
+        --bs-link-color-rgb: 59, 125, 221;
+        --bs-link-decoration: none;
+        --bs-link-hover-color: #2f64b1;
+        --bs-link-hover-color-rgb: 47, 100, 177;
+        --bs-link-hover-decoration: underline;
+        --bs-code-color: #e83e8c;
+        --bs-highlight-bg: #fef1d5;
+        --bs-border-width: 1px;
+        --bs-border-style: solid;
+        --bs-border-color: #dee2e6;
+        --bs-border-color-translucent: rgba(0, 0, 0, 0.175);
+        --bs-border-radius: 0.2rem;
+        --bs-border-radius-sm: 0.1rem;
+        --bs-border-radius-lg: 0.3rem;
+        --bs-border-radius-xl: 1rem;
+        --bs-border-radius-xxl: 2rem;
+        --bs-border-radius-2xl: var(--bs-border-radius-xxl);
+        --bs-border-radius-pill: 50rem;
+        --bs-box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.05);
+        --bs-box-shadow-sm: 0 0.05rem 0.2rem rgba(0, 0, 0, 0.05);
+        --bs-box-shadow-lg: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.05);
+        --bs-box-shadow-inset: inset 0 1px 2px rgba(0, 0, 0, 0.075);
+        --bs-focus-ring-width: 0.25rem;
+        --bs-focus-ring-opacity: 0.25;
+        --bs-focus-ring-color: rgba(59, 125, 221, 0.25);
+        --bs-form-valid-color: #1cbb8c;
+        --bs-form-valid-border-color: #1cbb8c;
+        --bs-form-invalid-color: #dc3545;
+        --bs-form-invalid-border-color: #dc3545;
+      }
+      *,
+      :after,
+      :before {
+        box-sizing: border-box;
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        :root {
+          scroll-behavior: smooth;
+        }
+      }
+      body {
+        -webkit-text-size-adjust: 100%;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        background-color: var(--bs-body-bg);
+        color: var(--bs-body-color);
+        font-family: var(--bs-body-font-family);
+        font-size: var(--bs-body-font-size);
+        font-weight: var(--bs-body-font-weight);
+        line-height: var(--bs-body-line-height);
+        margin: 0;
+        text-align: var(--bs-body-text-align);
+      }
+      :root {
+        --bs-breakpoint-xs: 0;
+        --bs-breakpoint-sm: 576px;
+        --bs-breakpoint-md: 768px;
+        --bs-breakpoint-lg: 992px;
+        --bs-breakpoint-xl: 1200px;
+        --bs-breakpoint-xxl: 1440px;
+      }
+    </style>
+    <style>
+      body,
+      html {
+        font-family: "Manrope", sans-serif;
+      }
+      body {
+        background: #000;
+      }
+      @media (max-width: 767px) {
+        body {
+          padding-bottom: 70px;
+        }
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/2.2.2/css/dataTables.bootstrap5.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/responsive/3.0.4/css/responsive.bootstrap5.css"
+    />
+    <style>
+      .new-tag-menus[_ngcontent-nxb-c54] {
+        animation: tagmenu 2s ease-out infinite;
+        display: block;
+      }
+      @keyframes tagmenu {
+        0% {
+          background: red;
+          color: #fff;
+        }
+        50% {
+          background: #fff;
+          color: red;
+        }
+        to {
+          background: #ff0;
+          color: #000;
+        }
+      }
+    </style>
+    <style>
+      .hightlight-menus[_ngcontent-nxb-c56] {
+        text-align: center;
+        margin: 0;
+        padding: 4px 0;
+        font-size: 15px;
+        animation: highlightanim 4s ease-in-out infinite;
+        display: block;
+        width: 100%;
+        font-weight: 900;
+      }
+      @keyframes highlightanim {
+        0% {
+          opacity: 1;
+          background: red;
+        }
+        to {
+          opacity: 1;
+          background: #0800ff;
+        }
+      }
+      .sticky-topnav[_ngcontent-nxb-c56] {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1050;
+        box-shadow: 0 2px 4px #0000001a;
+      }
+      .dipo_with[_ngcontent-nxb-c56] {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        background-image: url(data:image/webp;base64,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);
+        background-size: cover;
+        background-position: 50%;
+      }
+      .dipo_with[_ngcontent-nxb-c56] a[_ngcontent-nxb-c56] {
+        width: 50%;
+        text-align: center;
+        padding: 6px;
+        font-size: 14px;
+        text-transform: capitalize;
+        color: #fff;
+      }
+      .dipo_with[_ngcontent-nxb-c56]
+        a[_ngcontent-nxb-c56]
+        img[_ngcontent-nxb-c56] {
+        width: 22px;
+        margin-right: 8px;
+      }
+      #sport99997[_ngcontent-nxb-c56] {
+        display: none;
+      }
+      a.casino_chip[_ngcontent-nxb-c56] {
+        bottom: 3%;
+        z-index: 9;
+      }
+      .modal-content-padding-custom[_ngcontent-nxb-c56] {
+        margin-top: 30%;
+      }
+      .ab_rae_btns[_ngcontent-nxb-c56] {
+        text-align: center;
+        padding: 5px 0;
+        border-top: 1px solid;
+        border-bottom: 1px solid;
+      }
+      .ab_rae_btns[_ngcontent-nxb-c56] button[_ngcontent-nxb-c56] {
+        width: 70%;
+        display: block;
+      }
+      .ab_btns[_ngcontent-nxb-c56] {
+        border: 1px solid var(--theme-color);
+        padding: 2px;
+        font-size: 11px;
+      }
+      .ab_btns[_ngcontent-nxb-c56],
+      .ab_btns[_ngcontent-nxb-c56] span[_ngcontent-nxb-c56] {
+        color: var(--theme-color);
+      }
+      .rae_btns[_ngcontent-nxb-c56] {
+        background: var(--theme-color);
+      }
+      .balance-information[_ngcontent-nxb-c56] {
+        margin: 10px 0;
+      }
+      .balance-row[_ngcontent-nxb-c56] {
+        display: flex;
+        justify-content: left;
+        padding: 0 10px;
+        font-size: 13px;
+      }
+      .balance-text-left[_ngcontent-nxb-c56] {
+        width: 50%;
+        color: #000;
+        font-weight: 500;
+      }
+      .balance-price[_ngcontent-nxb-c56] {
+        margin-left: 10px;
+        width: 50%;
+        color: #000;
+        font-weight: 600;
+      }
+      li.ab_rae_btns[_ngcontent-nxb-c56] {
+        text-align: center;
+        padding: 5px 0;
+      }
+      li.ab_rae_btns[_ngcontent-nxb-c56] button[_ngcontent-nxb-c56] {
+        width: 80%;
+      }
+      .ab_btns[_ngcontent-nxb-c56] {
+        border: 1px solid var(--theme-primary-color);
+        background: none;
+        text-transform: uppercase;
+        border-radius: 100px;
+        color: var(--theme-primary-color);
+        padding: 5px;
+        font-size: 12px;
+        margin: 0 auto;
+      }
+      .ab_btns[_ngcontent-nxb-c56] span[_ngcontent-nxb-c56] {
+        margin-left: 15px;
+      }
+      .rae_btns[_ngcontent-nxb-c56] {
+        background: var(--theme-primary-color);
+        text-transform: uppercase;
+        border-radius: 100px;
+        color: #fff;
+        padding: 5px 18px;
+        font-size: 12px;
+        margin: 5px auto 0;
+        border: none;
+      }
+      .deposit-withdraw-sidebar-title[_ngcontent-nxb-c56]
+        img[_ngcontent-nxb-c56] {
+        width: 7.5%;
+        margin-right: 7px;
+        line-height: 0;
+      }
+      a.whatsapp_link[_ngcontent-nxb-c56] {
+        position: fixed;
+        right: 4%;
+        bottom: 3%;
+        z-index: 9;
+      }
+      a.whatsapp_link[_ngcontent-nxb-c56] img[_ngcontent-nxb-c56] {
+        width: 75px;
+        animation: simple-scale 1s linear 1s infinite alternate;
+      }
+      a.casino_chip[_ngcontent-nxb-c56] {
+        position: fixed;
+        left: 4%;
+        bottom: 11%;
+      }
+      a.casino_chip[_ngcontent-nxb-c56] img[_ngcontent-nxb-c56] {
+        width: 50px;
+        animation: simple-scale 1s linear 1s infinite alternate;
+      }
+      @keyframes simple-scale {
+        to {
+          transform: scale(1.2);
+        }
+      }
+    </style>
+    <style>
+      .marquee[_ngcontent-nxb-c55] span[_ngcontent-nxb-c55] {
+        background: none;
+      }
+      .marquee[_ngcontent-nxb-c55] {
+        display: inline-block !important;
+      }
+    </style>
+    <style>
+      .home-animated[_ngcontent-nxb-c73] {
+        position: absolute;
+        padding: 5px 14px;
+        color: #fff;
+        text-decoration: none;
+        overflow: hidden;
+        border-radius: 3px;
+        background: var(--theme-primary-color);
+        left: 15px;
+        bottom: 15px;
+        font-size: 9px;
+        text-transform: uppercase;
+        animation: zoom-in-zoom-out 1s ease-out infinite;
+        font-weight: 700;
+      }
+      @keyframes zoom-in-zoom-out {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+      .home-animated[_ngcontent-nxb-c73]:hover {
+        color: #000;
+      }
+      .home-animated[_ngcontent-nxb-c73] i[_ngcontent-nxb-c73] {
+        color: darkred;
+      }
+      .home-animated[_ngcontent-nxb-c73] span[_ngcontent-nxb-c73] {
+        border-radisu: 10px;
+      }
+      .home-animated[_ngcontent-nxb-c73] span[_ngcontent-nxb-c73]:first-child {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 2px;
+        border-radisu: 10px;
+        background: linear-gradient(90deg, #fff400, #fff);
+        animation: animate1 2s linear infinite;
+      }
+      @keyframes animate1 {
+        0% {
+          transform: translateX(-100%);
+        }
+        to {
+          transform: translateX(100%);
+        }
+      }
+      .home-animated[_ngcontent-nxb-c73] span[_ngcontent-nxb-c73]:nth-child(2) {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 2px;
+        background: linear-gradient(180deg, #05fb33, #fff);
+        animation: animate2 2s linear infinite;
+        animation-delay: 1s;
+      }
+      @keyframes animate2 {
+        0% {
+          transform: translateY(-100%);
+        }
+        to {
+          transform: translateY(100%);
+        }
+      }
+      .home-animated[_ngcontent-nxb-c73] span[_ngcontent-nxb-c73]:nth-child(3) {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(270deg, #ff7d88, #fff);
+        animation: animate3 2s linear infinite;
+      }
+      @keyframes animate3 {
+        0% {
+          transform: translateX(100%);
+        }
+        to {
+          transform: translateX(-100%);
+        }
+      }
+      .home-animated[_ngcontent-nxb-c73] span[_ngcontent-nxb-c73]:nth-child(4) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 2px;
+        background: linear-gradient(0deg, #05d8fb, #fff);
+        animation: animate4 2s linear infinite;
+        animation-delay: 1s;
+      }
+      @keyframes animate4 {
+        0% {
+          transform: translateY(100%);
+        }
+        to {
+          transform: translateY(-100%);
+        }
+      }
+      .popularDiv[_ngcontent-nxb-c73] {
+        position: relative;
+        margin-bottom: 0;
+      }
+      .popularDiv[_ngcontent-nxb-c73] svg[_ngcontent-nxb-c73] {
+        position: absolute;
+        width: 100%;
+        height: auto;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: #02020282;
+      }
+      .popularDiv[_ngcontent-nxb-c73]
+        svg[_ngcontent-nxb-c73]
+        text[_ngcontent-nxb-c73] {
+        text-transform: uppercase;
+        animation: stroke 3s infinite alternate;
+        stroke-width: 3;
+        stroke: red;
+        font-size: 90px;
+        font-family: fangsong;
+      }
+      .popularDiv[_ngcontent-nxb-c73] i[_ngcontent-nxb-c73] {
+        position: absolute;
+        right: 20%;
+        top: 4px;
+        font-size: 30px;
+        color: #fff;
+        animation: bounce 3s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
+        height: auto;
+        padding: 0;
+      }
+      @keyframes bounce {
+        50% {
+          transform: translate(-15px);
+          color: #ff0;
+        }
+      }
+      @keyframes stroke {
+        0% {
+          fill: #fff700;
+          stroke: #fff;
+          stroke-dashoffset: 25%;
+          stroke-dasharray: 0 50%;
+          stroke-width: 4;
+        }
+        70% {
+          fill: #fff200;
+          stroke: #fff;
+        }
+        80% {
+          fill: #00ff07;
+          stroke: #fff;
+          stroke-width: 4px;
+        }
+        to {
+          fill: #d4ff00;
+          stroke: #fff;
+          stroke-dashoffset: -25%;
+          stroke-dasharray: 50% 0;
+          stroke-width: 0;
+        }
+      }
+      .egc_second[_ngcontent-nxb-c73]
+        .exchangeGames-img-body[_ngcontent-nxb-c73] {
+        border-radius: 1px;
+        height: 110px;
+      }
+      .custom-thumb-section[_ngcontent-nxb-c73] {
+        display: none;
+      }
+      .casinoprovider-thumb-section[_ngcontent-nxb-c73] {
+        width: 100%;
+        display: grid;
+        grid-template-rows: auto auto;
+        grid-auto-flow: column;
+        overflow-x: scroll;
+        grid-row-gap: 1px;
+        grid-column-gap: 1px;
+        margin-bottom: 1px;
+        justify-content: space-between;
+        white-space: nowrap;
+      }
+      .casinoprovider-thumb-section[_ngcontent-nxb-c73]
+        .cts-img[_ngcontent-nxb-c73] {
+        width: 100%;
+      }
+      @media (max-width: 991px) {
+        .popularDiv[_ngcontent-nxb-c73] i[_ngcontent-nxb-c73] {
+          right: 10%;
+          top: -3px;
+          font-size: 15px;
+        }
+        .home-animated[_ngcontent-nxb-c73] {
+          padding: 1px 5px;
+          right: 2px;
+          bottom: 2px;
+          left: inherit;
+          font-size: 7px;
+          font-weight: 500;
+        }
+        .custom-thumb-section[_ngcontent-nxb-c73] {
+          width: 100%;
+          display: grid;
+          grid-template-rows: auto auto;
+          grid-auto-flow: column;
+          overflow-x: scroll;
+          grid-row-gap: 1px;
+          grid-column-gap: 1px;
+          margin-bottom: 1px;
+          justify-content: space-between;
+          white-space: nowrap;
+        }
+        .casinoprovider-thumb-section[_ngcontent-nxb-c73]
+          .cts-img[_ngcontent-nxb-c73],
+        .custom-thumb-section[_ngcontent-nxb-c73] .cts-img[_ngcontent-nxb-c73] {
+          width: 140px;
+        }
+      }
+    </style>
+    <style>
+      [_nghost-nxb-c39]
+        .nav-tabs[_ngcontent-nxb-c39]
+        .nav-item.disabled[_ngcontent-nxb-c39]
+        a.disabled[_ngcontent-nxb-c39] {
+        cursor: default;
+      }
+    </style>
+    <style>
+      .fp[_ngcontent-nxb-c37] {
+        color: #fff;
+        font-size: 13px;
+      }
+      .sign-up-page[_ngcontent-nxb-c37] {
+        width: 100%;
+        height: 100vh;
+      }
+      .handicon[_ngcontent-nxb-c37] {
+        width: 30px !important;
+        position: absolute;
+        left: 38px;
+      }
+      .slide-right[_ngcontent-nxb-c37] {
+        animation: slide-right 2s cubic-bezier(0.785, 0.135, 0.15, 0.86)
+          infinite alternate both;
+      }
+      @keyframes slide-right {
+        0% {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(20px);
+        }
+      }
+      .social_connect[_ngcontent-nxb-c37] {
+        text-align: center;
+        justify-content: center;
+        border-top: 1px dashed var(--theme1-bg);
+        margin-top: 10px;
+        padding-top: 5px;
+      }
+      .social_connect[_ngcontent-nxb-c37] a[_ngcontent-nxb-c37] {
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 3%;
+      }
+      .social_connect[_ngcontent-nxb-c37] a[_ngcontent-nxb-c37]:hover {
+        text-decoration: none;
+        border: none;
+        color: var(--theme1-bg);
+      }
+      .social_connect[_ngcontent-nxb-c37]
+        a[_ngcontent-nxb-c37]
+        span[_ngcontent-nxb-c37] {
+        font-size: 14px;
+        font-weight: 900;
+        margin-left: 5px;
+        color: #fff;
+        text-transform: uppercase;
+      }
+      .social_connect[_ngcontent-nxb-c37]
+        a[_ngcontent-nxb-c37]
+        svg[_ngcontent-nxb-c37] {
+        height: 30px;
+        width: 30px;
+      }
+    </style>
+    <style>
+      .inplay-dot {
+        background: green;
+        width: 10px;
+        height: 10px;
+        display: inline-flex;
+        align-items: center;
+        border-radius: 50px;
+        animation: blink 1s linear infinite;
+      }
+      ul.ks-cboxtags[_ngcontent-sah-c76] {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        float: right;
+        margin: 0 30% 0 0;
+      }
+      ul.ks-cboxtags[_ngcontent-sah-c76] li[_ngcontent-sah-c76] {
+        display: inline;
+      }
+      ul.ks-cboxtags[_ngcontent-sah-c76]
+        li[_ngcontent-sah-c76]
+        label[_ngcontent-sah-c76] {
+        display: inline-block;
+        border: 1px solid var(--theme-primary-color);
+        color: var(--theme-primary-color);
+        border-radius: 25px;
+        white-space: nowrap;
+        margin: 3px 1px;
+        -webkit-user-select: none;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        transition: all 0.2s;
+        font-weight: 600;
+        padding: 5px 10px;
+        cursor: pointer;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      ul.ks-cboxtags[_ngcontent-sah-c76]
+        li[_ngcontent-sah-c76]
+        label[_ngcontent-sah-c76]:before {
+        display: inline-block;
+        font-style: normal;
+        font-feature-settings: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        font-family: bootstrap-icons;
+        font-weight: 400;
+        font-size: 12px;
+        padding-right: 2px;
+        content: "\f4fe";
+        transition: transform 0.3s ease-in-out;
+      }
+      ul.ks-cboxtags[_ngcontent-sah-c76]
+        li[_ngcontent-sah-c76]
+        input[type="checkbox"][_ngcontent-sah-c76]:checked
+        + label[_ngcontent-sah-c76]:before {
+        content: "\f633";
+        transform: rotate(-1turn);
+        transition: transform 0.3s ease-in-out;
+      }
+      ul.ks-cboxtags[_ngcontent-sah-c76]
+        li[_ngcontent-sah-c76]
+        input[type="checkbox"][_ngcontent-sah-c76]:checked
+        + label[_ngcontent-sah-c76] {
+        border: 1px solid #00ad6f;
+        background-color: #00ad6f;
+        color: #fff;
+        transition: all 0.2s;
+      }
+      ul.ks-cboxtags[_ngcontent-sah-c76]
+        li[_ngcontent-sah-c76]
+        input[type="checkbox"][_ngcontent-sah-c76] {
+        display: absolute;
+        position: absolute;
+        opacity: 0;
+      }
+      .event_highlight[_ngcontent-sah-c76] {
+        position: relative;
+        border-bottom: none;
+        border-top: none;
+      }
+      .event_highlight[_ngcontent-sah-c76]:after {
+        content: "";
+        animation: bottom 5s linear infinite;
+        background: #0a0;
+        height: 3px;
+        display: inherit;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+      }
+      @keyframes bottom {
+        0% {
+          transform: scaleX(0);
+          transform-origin: bottom left;
+        }
+        50% {
+          transform: scaleX(1);
+          transform-origin: bottom left;
+        }
+        to {
+          transform: scaleX(0);
+          transform-origin: bottom right;
+        }
+      }
+      @media (max-width: 767px) {
+        ul.ks-cboxtags[_ngcontent-sah-c76]
+          li[_ngcontent-sah-c76]
+          label[_ngcontent-sah-c76] {
+          padding: 3px 10px;
+        }
+        ul.ks-cboxtags[_ngcontent-sah-c76] {
+          margin-right: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
