@@ -128,7 +128,7 @@ const MyBankDetails = () => {
                   borderTopLeftRadius: "10px",
                   borderTopRightRadius: "10px",
                   fontSize: "12px",
-                  backgroundColor: "rgb(227 226 226)",
+                  backgroundColor: "#fff",
                 }}
                 key={i}
               >

@@ -2,6 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useGroupQuery } from "../../hooks/group";
 import SportsTab from "../../components/modules/Sports/SportsTab";
 import { EVENT_NAMES } from "../../const";
+import Casino from "../../components/modules/Sports/Casino";
 
 const Sports = () => {
   const navigate = useNavigate();
@@ -31,6 +32,7 @@ const Sports = () => {
             <SportsTab />
             {eventTypeId != 7 &&
               eventTypeId != 4339 &&
+              eventTypeId != "casino" &&
               groupedData?.length > 0 && (
                 <div className="tab-content">
                   <div
@@ -215,6 +217,7 @@ const Sports = () => {
                   </div>
                 </div>
               )}
+            {eventTypeId === "casino" && <Casino />}
           </div>
         </div>
       </div>

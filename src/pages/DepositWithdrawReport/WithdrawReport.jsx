@@ -214,7 +214,15 @@ const WithdrawReport = () => {
             );
           })
         ) : (
-          <div className="no-data ng-star-inserted ">
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              marginTop: "20px",
+            }}
+            className="no-data ng-star-inserted "
+          >
             <p>No transaction yet!</p>
           </div>
         )}

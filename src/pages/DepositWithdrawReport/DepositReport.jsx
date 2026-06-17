@@ -175,7 +175,15 @@ const DepositReport = () => {
             );
           })
         ) : (
-          <div className="no-data ng-star-inserted ">
+          <div
+            className="no-data ng-star-inserted "
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              marginTop: "20px",
+            }}
+          >
             <p>No transaction yet!</p>
           </div>
         )}

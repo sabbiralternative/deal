@@ -1,14 +1,39 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useLogo } from "../../../context/ApiProvider";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import useBalance from "../../../hooks/balance";
+import { useState } from "react";
+import { Settings } from "../../../api";
+import { setShowLoginModal } from "../../../redux/features/global/globalSlice";
+import WarningCondition from "../../shared/WarningCondition/WarningCondition";
 
 const LeftSidebar = () => {
   const { logo } = useLogo();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [showWarning, setShowWarning] = useState(false);
+  const [gameInfo, setGameInfo] = useState({ gameName: "", gameId: "" });
   const { token } = useSelector((state) => state.auth);
   const { data } = useBalance();
+
+  const handleNavigateToIFrame = (name, id) => {
+    if (token) {
+      if (Settings.casino_currency !== "AED") {
+        navigate(`/casino/${name}/${id}`);
+      } else {
+        setGameInfo({ gameName: "", gameId: "" });
+        setGameInfo({ gameName: name, gameId: id });
+        setShowWarning(true);
+      }
+    } else {
+      dispatch(setShowLoginModal(true));
+    }
+  };
   return (
     <div>
+      {showWarning && (
+        <WarningCondition gameInfo={gameInfo} setShowWarning={setShowWarning} />
+      )}
       <nav id="sidebar" className="sidebar js-sidebar">
         <div
           className="sidebar-content js-simplebar"
@@ -101,16 +126,22 @@ const LeftSidebar = () => {
                 <ul className="nav-content collapse" id="collapse3"></ul>
               </li>
               <li className="sidebar-item">
-                <Link to="/casino" className="sidebar-link">
+                <Link
+                  to="/sports/casino?product=All&category=All"
+                  className="sidebar-link"
+                >
                   <img className="img-fluid" src="/assets/icon-casino.svg" />
                   <span className="align-middle">Casino</span>
                 </Link>
               </li>
               <li className="sidebar-item">
-                <Link to="/sports_book" className="sidebar-link">
+                <a
+                  onClick={() => handleNavigateToIFrame("sportsbook", "550000")}
+                  className="sidebar-link"
+                >
                   <img className="img-fluid" src="/assets/icon-99991.svg" />
                   <span className="align-middle">Sports book</span>
-                </Link>
+                </a>
               </li>
               <li className="sidebar-item">
                 <Link

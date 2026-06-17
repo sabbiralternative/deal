@@ -8,7 +8,9 @@ import { Settings } from "../../../api";
 import { setUser } from "../../../redux/features/auth/authSlice";
 import {
   setShowBanner,
+  setShowForgotPasswordModal,
   setShowLoginModal,
+  setShowRegisterModal,
 } from "../../../redux/features/global/globalSlice";
 import toast from "react-hot-toast";
 import useCloseModalClickOutside from "../../../hooks/closeModal";
@@ -178,7 +180,10 @@ const Login = () => {
                             className="form-control ng-untouched ng-pristine ng-invalid"
                           />
                         </div>
-                        <div className="input-group">
+                        <div
+                          className="input-group"
+                          style={{ marginBottom: "0px" }}
+                        >
                           <div className="input-group-prepend">
                             <span className="input-group-text">
                               <img
@@ -194,6 +199,16 @@ const Login = () => {
                             className="form-control ng-untouched ng-pristine ng-invalid"
                           />
                         </div>
+                        <p
+                          onClick={() => {
+                            dispatch(setShowLoginModal(false));
+                            dispatch(setShowForgotPasswordModal(true));
+                          }}
+                          className="text-end text-white cursor-pointer"
+                          style={{ textDecoration: "underline" }}
+                        >
+                          Forgot Password?
+                        </p>
 
                         <button type="submit" className="btn_login mb-2">
                           login
@@ -205,6 +220,22 @@ const Login = () => {
                         >
                           login with demo
                         </button>
+                        <div className="text-center" style={{ color: "white" }}>
+                          Don&apos;t have an account?{" "}
+                          <button
+                            style={{
+                              color: "white",
+                              textDecoration: "underline",
+                            }}
+                            onClick={() => {
+                              dispatch(setShowLoginModal(false));
+                              dispatch(setShowRegisterModal(true));
+                            }}
+                            type="button"
+                          >
+                            Sign Up
+                          </button>
+                        </div>
                       </form>
                     </div>
                   </div>

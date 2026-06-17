@@ -6,11 +6,14 @@ import Header from "../components/UI/Header/Header";
 import MobileFooter from "../components/UI/Footer/Footer";
 import LeftSidebar from "../components/UI/Sidebar/LeftSidebar";
 import Login from "../components/modals/Login/Login";
+import Register from "../components/modals/Register/Register";
+import ForgotPassword from "../components/modals/ForgotPassword/ForgotPassword";
 
 const MainLayout = () => {
   const [, setShowBuildVersion] = useState(false);
   const stored_build_version = localStorage.getItem("build_version");
-  const { group, showLoginModal } = useSelector((state) => state.global);
+  const { group, showLoginModal, showRegisterModal, showForgotPasswordModal } =
+    useSelector((state) => state.global);
   const location = useLocation();
   const ref = useRef();
 
@@ -40,6 +43,8 @@ const MainLayout = () => {
   return (
     <div className="wrapper">
       {showLoginModal && <Login />}
+      {showRegisterModal && <Register />}
+      {showForgotPasswordModal && <ForgotPassword />}
       <LeftSidebar />
       <div className="main">
         <Header />

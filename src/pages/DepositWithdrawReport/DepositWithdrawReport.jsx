@@ -92,6 +92,7 @@ const DepositWithdrawReport = () => {
             transitionDuration: "500ms", // duration-500
             opacity: fade ? 1 : 0,
             fontWeight: 500, // for font-medium in <span>
+            backgroundColor: "#fff",
           }}
         >
           <img
