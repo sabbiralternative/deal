@@ -158,6 +158,10 @@ export const router = createBrowserRouter(
           path: "/sports/:eventTypeId",
           element: <Sports />,
         },
+        {
+          path: "/change-password",
+          element: <ChangePassword />,
+        },
       ],
     },
 
@@ -172,10 +176,6 @@ export const router = createBrowserRouter(
     {
       path: "/forgot-password",
       element: <ForgotPassword />,
-    },
-    {
-      path: "/change-password",
-      element: <ChangePassword />,
     },
   ],
   {

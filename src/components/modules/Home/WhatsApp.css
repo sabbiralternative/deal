@@ -1,0 +1,40 @@
+.social-fab {
+  position: fixed;
+  cursor: pointer;
+  left: 1rem; /* left-4 = 16px; whatsapp uses left-3 = 12px, overridden below */
+  z-index: 50;
+  display: flex;
+  width: max-content;
+  height: max-content;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  transition: all 0.5s;
+}
+
+.social-fab__icon-wrap {
+  height: 100%;
+  background-color: transparent;
+  margin-top: -3px;
+  margin-left: -3px;
+}
+
+.social-fab__icon {
+  height: 2.75rem; /* 44px, h-11 w-11 */
+  width: 2.75rem;
+}
+
+.social-fab--instagram {
+  top: calc(100dvh - 215px);
+  left: 1rem; /* left-4 */
+}
+
+.social-fab--telegram {
+  top: calc(100dvh - 165px);
+  left: 1rem; /* left-4 */
+}
+
+.social-fab--whatsapp {
+  top: calc(100dvh - 120px);
+  left: 0.75rem; /* left-3 */
+}

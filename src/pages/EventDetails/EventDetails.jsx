@@ -12,6 +12,7 @@ import Bookmaker from "../../components/modules/EventDetails/Bookmaker";
 import Fancy from "../../components/modules/EventDetails/Fancy";
 import HorseGreyhoundEventDetails from "../../components/modules/EventDetails/HorseGreyhoundEventDetails";
 import RightSidebar from "../../components/modules/EventDetails/RightSidebar";
+import Score from "../../components/modules/EventDetails/Score";
 
 const EventDetails = () => {
   const [sportsVideo, { data: iframe }] = useVideoMutation();
@@ -157,7 +158,7 @@ const EventDetails = () => {
                 {iframe?.result?.url && data?.score?.hasVideo && (
                   <div
                     id="collapseBasic"
-                    className="embed-responsive embed-responsive-16by9 collapse show"
+                    className="embed-responsive embed-responsive-16by9 collapse show d-none-desktop"
                     aria-hidden="true"
                   >
                     <iframe
@@ -167,8 +168,24 @@ const EventDetails = () => {
                     />
                   </div>
                 )}
+                {data?.score?.tracker && (
+                  <div
+                    id="collapseBasic"
+                    className="embed-responsive embed-responsive-16by9 collapse show "
+                    aria-hidden="true"
+                  >
+                    <iframe
+                      id="tvStr"
+                      className="embed-responsive-item w-100"
+                      src={data?.score?.tracker}
+                    />
+                  </div>
+                )}
 
                 <div id="accordionPanelsStayOpenExample" className="accordion">
+                  {eventTypeId == 4 && data?.iscore && (
+                    <Score iscore={data?.iscore} />
+                  )}
                   {matchOdds?.length > 0 && <MatchOdds data={matchOdds} />}
                   {bookmaker?.length > 0 && <Bookmaker data={bookmaker} />}
                   {data?.result?.length > 0 && <Fancy data={data?.result} />}
@@ -178,7 +195,7 @@ const EventDetails = () => {
                   {tiedMatch?.length > 0 && <MatchOdds data={tiedMatch} />}
                 </div>
               </div>
-              <RightSidebar />
+              <RightSidebar data={data} />
             </div>
           </div>
         </div>

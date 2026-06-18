@@ -194,15 +194,47 @@ const Fancy = ({ data }) => {
                                   <div>
                                     <div>
                                       <div className="details_market_div fancy_dmd_div">
-                                        <div className="dmd_left">
-                                          <img
+                                        <div
+                                          className="dmd_left"
+                                          style={{
+                                            justifyContent: "space-between",
+                                          }}
+                                        >
+                                          {/* <img
                                             src="assets/images/icons/fav-unfill.png"
                                             className="img-fluid"
-                                          />
+                                          /> */}
 
                                           <span className="marketEventName">
                                             {game?.name}
                                           </span>
+                                          <span className="mrkt-volume">
+                                            {" "}
+                                            {pnl && (
+                                              <span
+                                                className={`${
+                                                  pnl?.pnl > 0
+                                                    ? "text-success"
+                                                    : "text-danger"
+                                                }`}
+                                              >
+                                                {pnl?.pnl}
+                                              </span>
+                                            )}
+                                          </span>
+                                          {pnl?.pnl && (
+                                            <div
+                                              style={{
+                                                cursor: "pointer",
+                                              }}
+                                              onClick={() =>
+                                                handleGetLadder(pnl)
+                                              }
+                                              className="sucess-simbal"
+                                            >
+                                              <img src={images.ladder} alt="" />
+                                            </div>
+                                          )}
                                         </div>
                                         <div className="dmd_right">
                                           <div className="dmd_odds">
@@ -268,6 +300,11 @@ const Fancy = ({ data }) => {
                                           </div>
                                         </div>
                                       </div>
+                                      {game?.id === runnerId && (
+                                        <div className="col-lg-12 col-md-12 col-12 px-0 d-lg-none ng-star-inserted">
+                                          <BetSLip />
+                                        </div>
+                                      )}
                                     </div>
                                   </div>
                                 </div>

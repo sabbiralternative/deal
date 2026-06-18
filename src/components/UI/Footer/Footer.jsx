@@ -1,36 +1,32 @@
-import { useSelector } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const MobileFooter = () => {
-  const location = useLocation();
-  const { token } = useSelector((state) => state.auth);
-
   return (
     <div>
       <div className="footermenu">
         <div className="fm_menu">
-          <a href="/home">
+          <Link to="/">
             <img src="/assets/footer-home.svg" className="img-fluid" />
             <span>home</span>
-          </a>
+          </Link>
         </div>
         <div className="fm_menu">
-          <a href="/sports/99998">
+          <Link to="/sports/casino?product=All&category=All">
             <img src="/assets/footer-casino.svg" className="img-fluid" />
             <span>Casino</span>
-          </a>
+          </Link>
         </div>
         <div className="fm_menu">
-          <a href="javascript:void(0)">
+          <Link to="/sports/0">
             <img src="/assets/footer-uvgames.svg" className="img-fluid" />
-            <span>UV games</span>
-          </a>
+            <span>Inplay</span>
+          </Link>
         </div>
         <div className="fm_menu">
-          <a href="/profile">
+          <Link to="/casino/sportsbook/550000">
             <img src="/assets/footer-account.svg" className="img-fluid" />
-            <span>account</span>
-          </a>
+            <span>Sportsbook</span>
+          </Link>
         </div>
       </div>
     </div>

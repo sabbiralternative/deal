@@ -5,11 +5,14 @@
   --theme-other: #db5330;
   --dark-color: #fff;
   --light-color: #ddd;
+}
 
-  /* --theme-primary: #eac38f;
+/* :root {
+  --theme-primary: #eac38f;
   --theme-secondary: #18202e;
   --theme-gradient: #eac38f;
   --theme-other: #eac38f;
   --dark-color: #000;
-  --light-color: #fff; */
+  --light-color: #fff;
 }
+ */

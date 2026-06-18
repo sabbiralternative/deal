@@ -1,13 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Settings } from "../../../api";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import AppPopup from "./AppPopUp";
-import { Fragment, useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import {
   setClosePopUpForForever,
   setShowAPKModal,
   setShowAppPopUp,
   setShowLoginModal,
+  setShowMobileSidebar,
   setShowRegisterModal,
 } from "../../../redux/features/global/globalSlice";
 import Error from "../../modals/Error/Error";
@@ -15,14 +16,17 @@ import Notification from "./Notification";
 import DownloadAPK from "../../modals/DownloadAPK/DownloadAPK";
 import BuildVersion from "../../modals/BuildVersion/BuildVersion";
 import useBalance from "../../../hooks/balance";
-import { logout } from "../../../redux/features/auth/authSlice";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
-import useCloseModalClickOutside from "../../../hooks/closeModal";
 import Search from "./Search";
+import Dropdown from "./Dropdown";
+import { useLogo } from "../../../context/ApiProvider";
 
 const Header = () => {
-  const ref = useRef();
-  const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+  const { logo } = useLogo();
+
+  const [desktopDropdownOpen, setDesktopDropdownOpen] = useState(false);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
   const { data } = useBalance();
   const stored_build_version = localStorage.getItem("build_version");
   const [showBuildVersion, setShowBuildVersion] = useState(false);
@@ -31,10 +35,6 @@ const Header = () => {
   const dispatch = useDispatch();
   const { showAppPopUp, windowWidth, closePopupForForever, showAPKModal } =
     useSelector((state) => state?.global);
-
-  useCloseModalClickOutside(ref, () => {
-    setOpen(false);
-  });
 
   useEffect(() => {
     const apk_modal_shown = sessionStorage.getItem("apk_modal_shown");
@@ -86,30 +86,7 @@ const Header = () => {
   if (Settings.app_only && !closePopupForForever) {
     return <Error />;
   }
-  const links = [
-    { label: "Deposit", href: "/deposit", show: true },
-    { label: "Withdraw", href: "/withdraw", show: true },
-    {
-      label: "Deposit Withdraw Report",
-      href: "/deposit-withdraw-report",
-      show: true,
-    },
-    { label: "Betting Profit Loss", href: "/betting-profit-loss", show: true },
-    { label: "My Bank Details", href: "/my-bank-details", show: true },
-    { label: "Bonus Statement", href: "/bonus-statement", show: true },
-    {
-      label: "Affiliate",
-      href: "/affiliate",
-      show: Settings?.referral === true,
-    },
-    { label: "Promos & Bonus", href: "/promotions", show: true },
-    { label: "Lossback Bonus", href: "/lossback-bonus", show: true },
-    {
-      label: "App Only Bonus",
-      href: "/app-only-bonus",
-      show: closePopupForForever ? true : false,
-    },
-  ];
+
   return (
     <Fragment>
       <Notification />
@@ -126,17 +103,14 @@ const Header = () => {
       <div>
         <nav className="navbar navbar-expand">
           <a
-            href="javascript:void(0)"
+            onClick={() => dispatch(setShowMobileSidebar(true))}
             className="js-sidebar-toggle"
             style={{ width: "7%" }}
           >
             <img src="/assets/footer-menu.svg" className="img-fluid" />
           </a>
-          <div className="mobile-logo">
-            <img
-              className="img-fluid"
-              src="https://speedcdn.io/assets/logos/deal2026.com.png"
-            />
+          <div onClick={() => navigate("/")} className="mobile-logo">
+            <img className="img-fluid" src={logo} />
           </div>
 
           <Search />
@@ -165,79 +139,76 @@ const Header = () => {
 
               {token && (
                 <li className="nav-item">
-                  <div className="bal_exp mhide">
-                    <span>
-                      bal: <b>{data?.availBalance}</b>
-                    </span>
-                    <span>
-                      exp: <b>{data?.deductedExposure}</b>
-                    </span>
-                    <a onClick={() => dispatch(logout())}>logout?</a>
-                  </div>
                   <div
-                    className="top-menu"
                     style={{
-                      position: "relative",
-                      display: "inline-block",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "end",
+                      width: "100%",
                     }}
                   >
-                    <a
-                      onClick={() => setOpen(!open)}
-                      className="nav-link no-dw"
+                    {" "}
+                    <div className="bal_exp mhide">
+                      <span>
+                        bal: <b>{data?.availBalance}</b>
+                      </span>
+                      <span>
+                        exp: <b>{data?.deductedExposure}</b>
+                      </span>
+                      {/* <a onClick={() => dispatch(logout())}>logout?</a> */}
+                    </div>
+                    <div
+                      className="top-menu"
                       style={{
-                        background: "var(--theme-gradient)",
-                        color: "#000",
-                        borderRadius: "4px",
+                        position: "relative",
                       }}
                     >
-                      {" "}
-                      {user} <MdOutlineKeyboardArrowDown size={20} />
-                    </a>
-                    {open && (
-                      <ul
-                        ref={ref}
+                      <a
+                        onClick={() =>
+                          setDesktopDropdownOpen(!desktopDropdownOpen)
+                        }
+                        className="nav-link no-dw"
                         style={{
-                          position: "absolute",
-                          top: "110%",
-                          left: -75,
-                          minWidth: "160px",
-                          background: "#fff",
-                          border: "1px solid #e2e8f0",
-                          borderRadius: "6px",
-                          boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
-                          listStyle: "none",
-                          margin: 0,
-                          padding: "4px 0",
-                          zIndex: 10,
+                          background: "var(--theme-gradient)",
+                          color: "#000",
+                          borderRadius: "4px",
                         }}
                       >
-                        {links.map((link) => {
-                          if (!link.show) return;
-                          return (
-                            <li key={link.label}>
-                              <Link
-                                onClick={() => setOpen(false)}
-                                to={link.href}
-                                style={{
-                                  display: "block",
-                                  padding: "8px 16px",
-                                  color: "#1e293b",
-                                  textDecoration: "none",
-                                  background: "transparent",
-                                }}
-                                onMouseEnter={(e) =>
-                                  (e.target.style.background = "#f1f5f9")
-                                }
-                                onMouseLeave={(e) =>
-                                  (e.target.style.background = "transparent")
-                                }
-                              >
-                                {link.label}
-                              </Link>
-                            </li>
-                          );
-                        })}
-                      </ul>
+                        {" "}
+                        {user} <MdOutlineKeyboardArrowDown size={20} />
+                      </a>
+                      {desktopDropdownOpen && (
+                        <Dropdown setOpen={setDesktopDropdownOpen} />
+                      )}
+                    </div>
+                  </div>
+                </li>
+              )}
+              {token && (
+                <li className="nav-item dhide">
+                  <div
+                    className="nav-link maccount"
+                    style={{ position: "relative" }}
+                  >
+                    <span>
+                      <em>
+                        <small>
+                          <b>Bal:</b>
+                          {data?.availBalance}
+                        </small>
+                        &nbsp; <small>Exp:{data?.deductedExposure}</small>
+                      </em>
+                      <a
+                        onClick={() =>
+                          setMobileDropdownOpen(!mobileDropdownOpen)
+                        }
+                      >
+                        {user} <MdOutlineKeyboardArrowDown size={20} />
+                      </a>
+                    </span>
+                    {mobileDropdownOpen && (
+                      <Dropdown setOpen={setMobileDropdownOpen} />
                     )}
                   </div>
                 </li>

@@ -1,0 +1,157 @@
+/* Originals.css */
+
+/* ── Outer Wrapper ── */
+.originals-wrapper {
+  padding-top: 4px;
+  padding-bottom: 4px;
+
+  width: 100%;
+}
+
+/* ── Card Container ── */
+.originals-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: var(--color-bg-quaternary);
+  border-radius: 4px;
+  box-shadow: var(--shadow-home-casino-card-games);
+  divide-color: transparent;
+}
+
+/* ── Tab Header ── */
+.originals-tab-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-top: 2px;
+  border-radius: 4px 4px 0 0;
+  padding-left: 2px;
+  padding-right: 2px;
+  background-color: var(--color-bg-quaternary);
+  border-bottom: 1px solid var(--color-divider, rgba(0, 0, 0, 0.08));
+}
+
+.originals-tab-scroll {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.originals-tab-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Individual Tab ── */
+.originals-tab {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left: 2px;
+  margin-right: 2px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 4px;
+  padding-right: 4px;
+  border-radius: 6px 6px 0 0;
+  gap: 2px;
+  height: 100%;
+  background-color: var(--color-bg-quaternary);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: transform 100ms ease-in-out;
+}
+
+.originals-tab:active {
+  transform: scale(0.97);
+}
+
+.originals-tab--active {
+  border-bottom-color: var(--theme-primary);
+  color: var(--theme-primary);
+}
+
+.originals-tab--inactive {
+  color: #000;
+}
+
+.originals-tab-label {
+  font-size: 14px;
+  text-transform: capitalize;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+/* ── Games Scroll Area ── */
+.originals-games-scroll {
+  padding: 10px 0px;
+  transition: all 200ms ease-in-out;
+  width: 100%;
+  height: max-content;
+  overflow-x: auto;
+}
+
+/* ── Games Grid ── */
+.originals-games-grid {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-auto-flow: column;
+  row-gap: 8px;
+  column-gap: 6px;
+  width: max-content !important;
+}
+
+@media (min-width: 768px) {
+  .originals-games-grid {
+    width: 100%;
+  }
+}
+
+/* ── Game Card ── */
+.originals-game-card {
+  display: flex;
+  width: 117px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 100ms ease-in-out;
+}
+
+@media (min-width: 768px) {
+  .originals-game-card {
+    width: 135px;
+  }
+}
+
+.originals-game-inner {
+  width: 100%;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  transition: all 200ms ease-in-out;
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.originals-game-img-wrap {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 0.75;
+}
+
+.originals-game-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+  transition: transform 200ms ease-in-out;
+}
+
+.originals-game-img:hover {
+  transform: scale(1.03);
+}

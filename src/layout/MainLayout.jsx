@@ -12,8 +12,13 @@ import ForgotPassword from "../components/modals/ForgotPassword/ForgotPassword";
 const MainLayout = () => {
   const [, setShowBuildVersion] = useState(false);
   const stored_build_version = localStorage.getItem("build_version");
-  const { group, showLoginModal, showRegisterModal, showForgotPasswordModal } =
-    useSelector((state) => state.global);
+  const {
+    group,
+    showLoginModal,
+    showRegisterModal,
+    showForgotPasswordModal,
+    showMobileSidebar,
+  } = useSelector((state) => state.global);
   const location = useLocation();
   const ref = useRef();
 
@@ -41,11 +46,12 @@ const MainLayout = () => {
   }, [stored_build_version]);
 
   return (
-    <div className="wrapper">
+    <div className={`wrapper ${showMobileSidebar ? "sidebar-op" : ""}`}>
       {showLoginModal && <Login />}
       {showRegisterModal && <Register />}
       {showForgotPasswordModal && <ForgotPassword />}
       <LeftSidebar />
+
       <div className="main">
         <Header />
         <Outlet />

@@ -1,13 +1,18 @@
 import { useNavigate } from "react-router-dom";
 import Banner from "../../components/modules/Home/Banner";
 import useBannerImage from "../../hooks/banner.hook";
+import WhatsApp from "../../components/modules/Home/WhatsApp";
+import { useLotusHomeLobby } from "../../hooks/lotusHomeLobby";
+import Originals from "../../components/modules/Home/Originals";
+import IndianCardGames from "../../components/modules/Home/IndianCardGames";
 
 const Home = () => {
   const { data: bannerImage } = useBannerImage();
   const navigate = useNavigate();
-
+  const { data: lotusLobby } = useLotusHomeLobby();
   return (
     <main>
+      <WhatsApp />
       <div className="container" style={{ maxWidth: "100%" }}>
         <div>
           <div id="carouselExampleIndicators" className="carousel slide">
@@ -156,6 +161,8 @@ const Home = () => {
               </div>
             </div>
           </div>
+          <Originals trendingGames={lotusLobby?.trendingGames} />
+          <IndianCardGames />
         </div>
       </div>
     </main>

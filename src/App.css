@@ -1457,4 +1457,9 @@ html * {
 ;
   }
 }
+@media (min-width: 993px) {
+  .d-none-desktop {
+    display: none !important;
+  }
+}
 /* Horse banner */

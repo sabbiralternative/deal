@@ -41,6 +41,7 @@ const Search = () => {
     setSearchText("");
     setData([]);
   };
+
   return (
     <div className="searchbar">
       <div className="input-group">
@@ -64,10 +65,11 @@ const Search = () => {
               display: "block",
               visibility: "visible",
               willChange: "transform",
-              top: "0px",
+              top: "10px",
               left: "0px",
               transform: "translate3d(9px, 27px, 0px)",
               height: "147.268px",
+              width: "230px",
             }}
             id="ngb-typeahead-0"
             role="listbox"

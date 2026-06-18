@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useLiveCasinoIframeMutation } from "../../redux/features/casino/casino.api";
 import { Settings } from "../../api";
-import Loader from "../../components/shared/Loader/Loader";
 import { IoMdArrowDropleft } from "react-icons/io";
+import { Loader } from "rsuite";
 
 const CasinoIFrame = () => {
   const navigate = useNavigate();
@@ -34,7 +34,18 @@ const CasinoIFrame = () => {
               Back <IoMdArrowDropleft size={20} />
             </button>
           </h2>
-          {isLoading && !isSuccess && <Loader />}
+          {isLoading && !isSuccess && (
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                height: "50vh",
+              }}
+            >
+              <Loader />
+            </div>
+          )}
           <iframe
             style={{ minHeight: "100vh", width: "100%" }}
             allowfullscreen="true"

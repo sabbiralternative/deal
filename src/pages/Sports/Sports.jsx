@@ -3,6 +3,7 @@ import { useGroupQuery } from "../../hooks/group";
 import SportsTab from "../../components/modules/Sports/SportsTab";
 import { EVENT_NAMES } from "../../const";
 import Casino from "../../components/modules/Sports/Casino";
+import HorseGreyhound from "../../components/modules/Sports/HorseGreyhound";
 
 const Sports = () => {
   const navigate = useNavigate();
@@ -217,6 +218,10 @@ const Sports = () => {
                   </div>
                 </div>
               )}
+            {(eventTypeId != 7 || eventTypeId != 4339) && data?.length > 0 && (
+              <HorseGreyhound data={data} />
+            )}
+
             {eventTypeId === "casino" && <Casino />}
           </div>
         </div>

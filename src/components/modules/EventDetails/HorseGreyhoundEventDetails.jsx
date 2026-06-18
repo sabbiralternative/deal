@@ -187,210 +187,200 @@ const HorseGreyhoundEventDetails = ({ data }) => {
           </div>
         </div>
       </div>
-      {data?.map((game) => {
+      {data?.map((game, i) => {
         return (
-          <div
-            key={game?.id}
-            className="matchodds-cashout sat-odds-bk-ly-btn-design"
-          >
-            <div className="dScreen">
-              <div className="odds-menu">
-                <div className="row">
-                  <div className="col-12 col-md-7">
-                    <div className="sat-match-odds-flex">
-                      <div className="match-odds-wrap">
-                        <p className="match-odds titleMax">
-                          {" "}
-                          {game?.name?.toUpperCase()}
-                        </p>
-                        <span>
-                          <img
-                            loading="lazy"
-                            src="/assets/pin-white-rQYS-7hC.svg"
-                            className="img-fluid match-odds-pin"
-                          />
-                        </span>
+          <div key={i} className="accordion-item">
+            <div className="accordion-button">
+              <img src="/assets/fav-unfill.png" className="img-fluid" />
+              {game?.name?.toUpperCase()}
+
+              <button className="marketrulesicon">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/665/665049.png"
+                  className="img-fluid"
+                />
+              </button>
+              <a
+                data-bs-toggle="collapse"
+                data-bs-target="#panelsStayOpen-collapseOne"
+                aria-expanded="true"
+                aria-controls="panelsStayOpen-collapseOne"
+                className="on_off_div_btn"
+              >
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/130/130906.png"
+                  className="img-fluid"
+                />
+              </a>
+            </div>
+            <div
+              id="panelsStayOpen-collapseOne"
+              className="accordion-collapse collapse show"
+            >
+              <div className="accordion-body">
+                <div>
+                  <div>
+                    <div className="details_market_div head_bl">
+                      <div className="dmd_left">
+                        <b className="min-max">
+                          Min: <span>{game?.minLiabilityPerBet}</span> Max:{" "}
+                          <span>{game?.maxLiabilityPerBet}</span>
+                        </b>
+                      </div>
+                      <div className="dmd_right">
+                        <div className="dmd_odds">
+                          <button className="mhide" />
+                          <button className="mhide" />
+                          <button className="back">back</button>
+                          <button className="lay">lay</button>
+                          <button className="mhide" />
+                          <button className="mhide" />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-              <div className="odds-menu btn-color">
-                <div className="row">
-                  <div className="col-md-5 col-7">
-                    <div className="minmax mm-fi p-1">
-                      <dl className="fancy-info m-0">
-                        <dt>Min/Max</dt>
-                        <dd>
-                          {" "}
-                          {game?.minLiabilityPerBet}-{game?.maxLiabilityPerBet}
-                        </dd>
-                      </dl>
-                    </div>
-                  </div>
-                  <div className="col-md-7 col-5">
-                    <div className="btn-group dOddsBox">
-                      <div className="back dOddsBox-wrap">
-                        <button className="back back-img">Back</button>
-                      </div>
-                      <div className="lay dOddsBox-wrap">
-                        <button className="lay lay-img">Lay</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div>
-                {game?.runners?.map((runner) => {
-                  return (
-                    <div key={runner?.id} className="odds-menu bet-slip-area">
-                      <div className="row">
-                        <div className="col-md-5 col-7">
-                          <p className="team-name">
-                            {runner?.horse_name} &nbsp;{" "}
-                            <span className="SportEvent__market__title__exposure">
-                              <div
-                                className="jockey-detail sm-d-none d-md-flex"
-                                style={{ display: "flex" }}
-                              >
-                                {runner?.jocky && (
-                                  <span className="jockey-detail-box">
-                                    <b>Jockey:</b>
-                                    <span style={{ fontWeight: "normal" }}>
-                                      {runner?.jocky}
+                    {game?.runners?.map((runner, i) => {
+                      return (
+                        <div key={runner?.id + i}>
+                          <div className="details_market_div">
+                            <div className="dmd_left">
+                              <span className="marketEventName">
+                                {runner?.horse_name}
+                              </span>
+                              <span className="mrkt-volume">
+                                {" "}
+                                <div
+                                  className="jockey-detail sm-d-none d-md-flex"
+                                  style={{ display: "flex" }}
+                                >
+                                  {runner?.jocky && (
+                                    <span className="jockey-detail-box">
+                                      <b>Jockey:</b>
+                                      <span style={{ fontWeight: "normal" }}>
+                                        {runner?.jocky}
+                                      </span>
                                     </span>
-                                  </span>
-                                )}
-                                {runner?.trainer && (
-                                  <span className="jockey-detail-box">
-                                    <b>Trainer:</b>
-                                    <span style={{ fontWeight: "normal" }}>
-                                      {runner?.trainer}
+                                  )}
+                                  {runner?.trainer && (
+                                    <span className="jockey-detail-box">
+                                      <b>Trainer:</b>
+                                      <span style={{ fontWeight: "normal" }}>
+                                        {runner?.trainer}
+                                      </span>
                                     </span>
-                                  </span>
-                                )}
-                                {runner?.age && (
-                                  <span className="jockey-detail-box">
-                                    <b>Age:</b>
-                                    <span style={{ fontWeight: "normal" }}>
-                                      {runner?.age}
+                                  )}
+                                  {runner?.age && (
+                                    <span className="jockey-detail-box">
+                                      <b>Age:</b>
+                                      <span style={{ fontWeight: "normal" }}>
+                                        {runner?.age}
+                                      </span>
                                     </span>
-                                  </span>
+                                  )}
+                                </div>
+                              </span>
+                            </div>
+                            <div className="dmd_right">
+                              <div className="dmd_odds">
+                                <button
+                                  onClick={() =>
+                                    handleBetSlip(
+                                      "back",
+                                      game,
+                                      runner,
+                                      runner?.back?.[2]?.price,
+                                    )
+                                  }
+                                  className="back_light mhide"
+                                >
+                                  {runner?.back?.[2]?.price}{" "}
+                                  <em>{runner?.back?.[2]?.size}</em>
+                                </button>
+                                <button
+                                  onClick={() =>
+                                    handleBetSlip(
+                                      "back",
+                                      game,
+                                      runner,
+                                      runner?.back?.[1]?.price,
+                                    )
+                                  }
+                                  className="back_light mhide"
+                                >
+                                  {runner?.back?.[1]?.price}{" "}
+                                  <em>{runner?.back?.[1]?.size}</em>
+                                </button>
+                                <button
+                                  onClick={() =>
+                                    handleBetSlip(
+                                      "back",
+                                      game,
+                                      runner,
+                                      runner?.back?.[0]?.price,
+                                    )
+                                  }
+                                  className="back"
+                                >
+                                  {runner?.back?.[0]?.price}{" "}
+                                  <em>{runner?.back?.[0]?.size}</em>
+                                </button>
+                                <button
+                                  onClick={() =>
+                                    handleBetSlip(
+                                      "lay",
+                                      game,
+                                      runner,
+                                      runner?.lay?.[0]?.price,
+                                    )
+                                  }
+                                  className="lay"
+                                >
+                                  {runner?.lay?.[0]?.price}{" "}
+                                  <em> {runner?.lay?.[0]?.size}</em>
+                                </button>
+                                <button
+                                  onClick={() =>
+                                    handleBetSlip(
+                                      "lay",
+                                      game,
+                                      runner,
+                                      runner?.lay?.[1]?.price,
+                                    )
+                                  }
+                                  className="lay_light mhide"
+                                >
+                                  {runner?.lay?.[1]?.price}{" "}
+                                  <em>{runner?.lay?.[1]?.size}</em>
+                                </button>
+                                <button
+                                  onClick={() =>
+                                    handleBetSlip(
+                                      "lay",
+                                      game,
+                                      runner,
+                                      runner?.lay?.[2]?.price,
+                                    )
+                                  }
+                                  className="lay_light mhide"
+                                >
+                                  {runner?.lay?.[2]?.price}{" "}
+                                  <em> {runner?.lay?.[2]?.size}</em>
+                                </button>
+                                {runner?.status === "SUSPENDED" && (
+                                  <div className="suspended">suspended</div>
                                 )}
                               </div>
-                            </span>
-                          </p>
-                        </div>
-                        <div className="col-md-7 col-5">
-                          <div className="btn-group dOddsBox">
-                            <div className="back dOddsBox-wrap">
-                              <button
-                                onClick={() =>
-                                  handleBetSlip(
-                                    "back",
-                                    game,
-                                    runner,
-                                    runner?.back?.[2]?.price,
-                                  )
-                                }
-                                type="button"
-                                className="back back2"
-                              >
-                                {runner?.back?.[2]?.price}{" "}
-                                <span> {runner?.back?.[2]?.size}</span>
-                              </button>
-                              <button
-                                onClick={() =>
-                                  handleBetSlip(
-                                    "back",
-                                    game,
-                                    runner,
-                                    runner?.back?.[1]?.price,
-                                  )
-                                }
-                                type="button"
-                                className="back back1"
-                              >
-                                {runner?.back?.[1]?.price}{" "}
-                                <span>{runner?.back?.[1]?.size}</span>
-                              </button>
-                              <button
-                                onClick={() =>
-                                  handleBetSlip(
-                                    "back",
-                                    game,
-                                    runner,
-                                    runner?.back?.[0]?.price,
-                                  )
-                                }
-                                type="button"
-                                className="back"
-                              >
-                                {runner?.back?.[0]?.price}{" "}
-                                <span>{runner?.back?.[0]?.size}</span>
-                              </button>
                             </div>
-                            <div className="lay dOddsBox-wrap">
-                              <button
-                                onClick={() =>
-                                  handleBetSlip(
-                                    "lay",
-                                    game,
-                                    runner,
-                                    runner?.lay?.[0]?.price,
-                                  )
-                                }
-                                type="button"
-                                className="lay"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#collapseExample-one"
-                              >
-                                {runner?.lay?.[0]?.price}
-                                <span> {runner?.lay?.[0]?.size}</span>
-                              </button>
-                              <button
-                                onClick={() =>
-                                  handleBetSlip(
-                                    "lay",
-                                    game,
-                                    runner,
-                                    runner?.lay?.[1]?.price,
-                                  )
-                                }
-                                type="button"
-                                className="lay lay1"
-                              >
-                                {runner?.lay?.[1]?.price}{" "}
-                                <span>{runner?.lay?.[1]?.size}</span>
-                              </button>
-                              <button
-                                onClick={() =>
-                                  handleBetSlip(
-                                    "lay",
-                                    game,
-                                    runner,
-                                    runner?.lay?.[2]?.price,
-                                  )
-                                }
-                                type="button"
-                                className="lay lay2"
-                              >
-                                {runner?.lay?.[2]?.price}{" "}
-                                <span> {runner?.lay?.[2]?.size}</span>
-                              </button>
-                            </div>
-                            {runner?.status !== "OPEN" && (
-                              <div className="suspended">{runner?.status}</div>
-                            )}
                           </div>
+                          {runner?.id === runnerId && (
+                            <div className="col-lg-12 col-md-12 col-12 px-0 d-lg-none ng-star-inserted">
+                              <BetSLip />
+                            </div>
+                          )}
                         </div>
-                      </div>
-                      {runner?.id === runnerId && (
-                        <BetSLip currentPlaceBetEvent={game} />
-                      )}
-                    </div>
-                  );
-                })}
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
             </div>
           </div>

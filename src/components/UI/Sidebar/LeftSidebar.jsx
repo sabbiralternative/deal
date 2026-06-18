@@ -1,19 +1,27 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useLogo } from "../../../context/ApiProvider";
 import { useDispatch, useSelector } from "react-redux";
 import useBalance from "../../../hooks/balance";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Settings } from "../../../api";
-import { setShowLoginModal } from "../../../redux/features/global/globalSlice";
+import {
+  setShowLoginModal,
+  setShowMobileSidebar,
+} from "../../../redux/features/global/globalSlice";
 import WarningCondition from "../../shared/WarningCondition/WarningCondition";
+import useCloseModalClickOutside from "../../../hooks/closeModal";
+import Search from "../Header/Search";
 
 const LeftSidebar = () => {
+  const location = useLocation();
+  const ref = useRef();
   const { logo } = useLogo();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [showWarning, setShowWarning] = useState(false);
   const [gameInfo, setGameInfo] = useState({ gameName: "", gameId: "" });
   const { token } = useSelector((state) => state.auth);
+  const { showMobileSidebar } = useSelector((state) => state.global);
   const { data } = useBalance();
 
   const handleNavigateToIFrame = (name, id) => {
@@ -29,18 +37,37 @@ const LeftSidebar = () => {
       dispatch(setShowLoginModal(true));
     }
   };
+
+  useCloseModalClickOutside(ref, () => {
+    dispatch(setShowMobileSidebar(false));
+  });
+
+  useEffect(() => {
+    if (showMobileSidebar) {
+      dispatch(setShowMobileSidebar(false));
+    }
+  }, [location]);
   return (
     <div>
       {showWarning && (
         <WarningCondition gameInfo={gameInfo} setShowWarning={setShowWarning} />
       )}
-      <nav id="sidebar" className="sidebar js-sidebar">
+      <nav
+        ref={showMobileSidebar ? ref : null}
+        id="sidebar"
+        className={`sidebar js-sidebar ${showMobileSidebar ? "collapsed" : ""}`}
+      >
         <div
           className="sidebar-content js-simplebar"
           style={{ position: "relative" }}
         >
-          <button className="btn btn-close d-block d-lg-none">&nbsp;</button>
-          <div className="searchbar">
+          <button
+            onClick={() => dispatch(setShowMobileSidebar(false))}
+            className=" btn-close d-block d-lg-none"
+          >
+            &nbsp;
+          </button>
+          {/* <div className="searchbar">
             <div className="input-group">
               <span className="input-group-text">
                 <i data-feather="search" className="align-middle" />
@@ -53,7 +80,8 @@ const LeftSidebar = () => {
                 aria-autocomplete="list"
               />
             </div>
-          </div>
+          </div> */}
+          <Search />
           <Link to="/" className="sidebar-brand">
             <span className="align-middle">
               <img className="img-fluid" src={logo} />

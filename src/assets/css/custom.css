@@ -425,7 +425,7 @@ input:-webkit-autofill {
 .sidebar,
 .sidebar-content {
   /* background:#f3f3f3; */
-  background: #18202e;
+  background: var(--theme-secondary);
   height: 100% !important;
   padding-bottom: 30px;
 }
@@ -2156,16 +2156,16 @@ span.marketEventName {
     color: #fff;
   }
   .maccount {
-    color: #fff;
+    color: #fff !important;
     line-height: normal;
     text-transform: capitalize;
   }
-  .nav-link.maccount a:hover,
+  /* .nav-link.maccount a:hover,
   .nav-link.maccount a:focus,
   .nav-link.maccount:hover,
   .nav-link.maccount:focus {
     color: var(--theme-primary) !important;
-  }
+  } */
   .maccount em {
     font-style: normal;
     display: block;

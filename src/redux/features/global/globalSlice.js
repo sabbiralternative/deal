@@ -14,6 +14,7 @@ const initialState = {
   showAPKModal: false,
   windowWidth: window.innerWidth,
   closePopupForForever: false,
+  showMobileSidebar: false,
 };
 
 const stateSlice = createSlice({
@@ -59,6 +60,9 @@ const stateSlice = createSlice({
     setClosePopUpForForever: (state, action) => {
       state.closePopupForForever = action.payload;
     },
+    setShowMobileSidebar: (state, action) => {
+      state.showMobileSidebar = action.payload;
+    },
   },
 });
 
@@ -76,6 +80,7 @@ export const {
   setWindowWidth,
   setShowAPKModal,
   setClosePopUpForForever,
+  setShowMobileSidebar,
 } = stateSlice.actions;
 
 export default stateSlice.reducer;

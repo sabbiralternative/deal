@@ -6,11 +6,11 @@ import {
   setPlaceBetValues,
   setRunnerId,
 } from "../../../redux/features/events/eventSlice";
-import toast from "react-hot-toast";
 import { Settings } from "../../../api";
 import BetSLip from "./BetSLip";
 import { handleCashOutPlaceBet } from "../../../utils/handleCashoutPlaceBet";
 import SpeedCashOut from "../../modals/SpeedCashOut/SpeedCashOut";
+import { isGameSuspended } from "../../../utils/isOddSuspended";
 import { setShowLoginModal } from "../../../redux/features/global/globalSlice";
 
 const Bookmaker = ({ data }) => {
@@ -97,7 +97,7 @@ const Bookmaker = ({ data }) => {
 
       dispatch(setPlaceBetValues(betData));
     } else {
-      toast.error("Please login to place a bet.");
+      dispatch(setShowLoginModal(true));
     }
   };
 
@@ -246,7 +246,20 @@ const Bookmaker = ({ data }) => {
                 game?.runners?.length !== 3 &&
                 game?.status === "OPEN" &&
                 !speedCashOut && (
-                  <button className="btn btn_cashout" disabled>
+                  <button
+                    onClick={() =>
+                      handleCashOutPlaceBet(
+                        game,
+                        "lay",
+                        dispatch,
+                        pnlBySelection,
+                        token,
+                        teamProfitForGame,
+                      )
+                    }
+                    className="btn btn_cashout"
+                    disabled
+                  >
                     Cashout
                   </button>
                 )}
@@ -255,8 +268,18 @@ const Bookmaker = ({ data }) => {
                 game?.status === "OPEN" &&
                 game?.name !== "toss" &&
                 speedCashOut && (
-                  <button className="btn btn_losscut" disabled>
-                    loss cut
+                  <button
+                    onClick={() =>
+                      setSpeedCashOut({
+                        ...speedCashOut,
+                        market_name: game?.name,
+                        event_name: game?.eventName,
+                      })
+                    }
+                    disabled={isGameSuspended(game)}
+                    className="btn btn_losscut"
+                  >
+                    Speed Cashout
                   </button>
                 )}
 
@@ -318,7 +341,32 @@ const Bookmaker = ({ data }) => {
                               <span className="marketEventName">
                                 {runner?.name}
                               </span>
-                              <span className="mrkt-volume"></span>
+                              <span className="mrkt-volume">
+                                {" "}
+                                {pnl && (
+                                  <span
+                                    className={`${
+                                      pnl?.pnl > 0
+                                        ? "text-success"
+                                        : "text-danger"
+                                    }`}
+                                  >
+                                    {pnl?.pnl}
+                                  </span>
+                                )}
+                                {stake && runnerId && predictOddValues && (
+                                  <span
+                                    style={{ marginLeft: "10px" }}
+                                    className={` ${
+                                      predictOddValues?.exposure > 0
+                                        ? "text-success"
+                                        : "text-danger"
+                                    } `}
+                                  >
+                                    » &nbsp;({predictOddValues?.exposure})
+                                  </span>
+                                )}
+                              </span>
                             </div>
                             <div className="dmd_right">
                               <div className="dmd_odds">
@@ -412,6 +460,11 @@ const Bookmaker = ({ data }) => {
                               </div>
                             </div>
                           </div>
+                          {runner?.id === runnerId && (
+                            <div className="col-lg-12 col-md-12 col-12 px-0 d-lg-none ng-star-inserted">
+                              <BetSLip />
+                            </div>
+                          )}
                         </div>
                       );
                     })}
