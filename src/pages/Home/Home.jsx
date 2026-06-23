@@ -5,8 +5,12 @@ import WhatsApp from "../../components/modules/Home/WhatsApp";
 import { useLotusHomeLobby } from "../../hooks/lotusHomeLobby";
 import Originals from "../../components/modules/Home/Originals";
 import IndianCardGames from "../../components/modules/Home/IndianCardGames";
+import { useLanguage } from "../../context/LanguageProvider";
+import { languageValue } from "../../hooks/language";
+import { LanguageKey } from "../../const";
 
 const Home = () => {
+  const { valueByLanguage } = useLanguage();
   const { data: bannerImage } = useBannerImage();
   const navigate = useNavigate();
   const { data: lotusLobby } = useLotusHomeLobby();
@@ -44,7 +48,13 @@ const Home = () => {
                                 src="/assets/sport_4.png"
                               />
                               <div className="slg_content">
-                                <span>Cricket</span>
+                                <span>
+                                  {" "}
+                                  {languageValue(
+                                    valueByLanguage,
+                                    LanguageKey.CRICKET,
+                                  )}
+                                </span>
                               </div>
                             </div>
                             <div
@@ -57,7 +67,13 @@ const Home = () => {
                                 src="/assets/sport_1.png"
                               />
                               <div className="slg_content">
-                                <span>Football</span>
+                                <span>
+                                  {" "}
+                                  {languageValue(
+                                    valueByLanguage,
+                                    LanguageKey.FOOTBALL,
+                                  )}
+                                </span>
                               </div>
                             </div>
                             <div
@@ -70,7 +86,13 @@ const Home = () => {
                                 src="/assets/sport_2.png"
                               />
                               <div className="slg_content">
-                                <span>Tennis</span>
+                                <span>
+                                  {" "}
+                                  {languageValue(
+                                    valueByLanguage,
+                                    LanguageKey.TENNIS,
+                                  )}
+                                </span>
                               </div>
                             </div>
                             <div
@@ -122,7 +144,13 @@ const Home = () => {
                                 src="/assets/sport_7.png"
                               />
                               <div className="slg_content">
-                                <span>Horse Racing</span>
+                                <span>
+                                  {" "}
+                                  {languageValue(
+                                    valueByLanguage,
+                                    LanguageKey.HORSE,
+                                  )}
+                                </span>
                               </div>
                             </div>
                             <div
@@ -135,7 +163,13 @@ const Home = () => {
                                 src="/assets/sport_4339.png"
                               />
                               <div className="slg_content">
-                                <span>Greyhound Racing</span>
+                                <span>
+                                  {" "}
+                                  {languageValue(
+                                    valueByLanguage,
+                                    LanguageKey.GREYHOUND,
+                                  )}
+                                </span>
                               </div>
                             </div>
 
@@ -149,7 +183,13 @@ const Home = () => {
                                 src="/assets/sport_99994.png"
                               />
                               <div className="slg_content">
-                                <span>Kabaddi</span>
+                                <span>
+                                  {" "}
+                                  {languageValue(
+                                    valueByLanguage,
+                                    LanguageKey.KABADDI,
+                                  )}
+                                </span>
                               </div>
                             </div>
                           </div>

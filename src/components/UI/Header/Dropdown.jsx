@@ -4,23 +4,39 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../redux/features/auth/authSlice";
 import { Fragment, useRef } from "react";
 import useCloseModalClickOutside from "../../../hooks/closeModal";
+import { useLanguage } from "../../../context/LanguageProvider";
+import { languageValue } from "../../../hooks/language";
+import { LanguageKey } from "../../../const";
 
 const Dropdown = ({ setOpen }) => {
+  const { valueByLanguage } = useLanguage();
   const ref = useRef();
   const dispatch = useDispatch();
   const { closePopupForForever } = useSelector((state) => state?.global);
 
   useCloseModalClickOutside(ref, () => setOpen(false));
   const links = [
-    { label: "Deposit", href: "/deposit", show: true },
-    { label: "Withdraw", href: "/withdraw", show: true },
+    {
+      label: languageValue(valueByLanguage, LanguageKey.DEPOSIT),
+      href: "/deposit",
+      show: true,
+    },
+    {
+      label: languageValue(valueByLanguage, LanguageKey.WITHDRAW),
+      href: "/withdraw",
+      show: true,
+    },
     {
       label: "Deposit Withdraw Report",
       href: "/deposit-withdraw-report",
       show: true,
     },
     { label: "Betting Profit Loss", href: "/betting-profit-loss", show: true },
-    { label: "My Bank Details", href: "/my-bank-details", show: true },
+    {
+      label: languageValue(valueByLanguage, LanguageKey.MY_BANK_DETAILS),
+      href: "/my-bank-details",
+      show: true,
+    },
     { label: "Bonus Statement", href: "/bonus-statement", show: true },
     {
       label: "Affiliate",
@@ -35,7 +51,11 @@ const Dropdown = ({ setOpen }) => {
       show: closePopupForForever ? true : false,
     },
     { label: "Stake Settings", href: "/settings", show: true },
-    { label: "Change Password", href: "/change-password", show: true },
+    {
+      label: languageValue(valueByLanguage, LanguageKey.CHANGE_PASSWORD),
+      href: "/change-password",
+      show: true,
+    },
   ];
   const handleOpenSocialLink = (link) => {
     if (link) {

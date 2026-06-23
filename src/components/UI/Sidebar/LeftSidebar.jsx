@@ -11,8 +11,12 @@ import {
 import WarningCondition from "../../shared/WarningCondition/WarningCondition";
 import useCloseModalClickOutside from "../../../hooks/closeModal";
 import Search from "../Header/Search";
+import { useLanguage } from "../../../context/LanguageProvider";
+import { languageValue } from "../../../hooks/language";
+import { LanguageKey } from "../../../const";
 
 const LeftSidebar = () => {
+  const { valueByLanguage } = useLanguage();
   const location = useLocation();
   const ref = useRef();
   const { logo } = useLogo();
@@ -118,7 +122,10 @@ const LeftSidebar = () => {
                   to="/sports/4"
                 >
                   <img className="img-fluid" src="/assets/icon-4.svg" />
-                  <span className="align-middle">Cricket</span>
+                  <span className="align-middle">
+                    {" "}
+                    {languageValue(valueByLanguage, LanguageKey.CRICKET)}
+                  </span>
                 </Link>
               </li>
               <li className="sidebar-item">
@@ -128,7 +135,10 @@ const LeftSidebar = () => {
                   to="/sports/1"
                 >
                   <img className="img-fluid" src="/assets/icon-1.svg" />
-                  <span className="align-middle">Football</span>
+                  <span className="align-middle">
+                    {" "}
+                    {languageValue(valueByLanguage, LanguageKey.FOOTBALL)}
+                  </span>
                 </Link>
               </li>
               <li className="sidebar-item">
@@ -138,7 +148,10 @@ const LeftSidebar = () => {
                   to="/sports/2"
                 >
                   <img className="img-fluid" src="/assets/icon-2.svg" />
-                  <span className="align-middle">Tennis</span>
+                  <span className="align-middle">
+                    {" "}
+                    {languageValue(valueByLanguage, LanguageKey.TENNIS)}
+                  </span>
                 </Link>
               </li>
               <li className="sidebar-item">
@@ -178,7 +191,10 @@ const LeftSidebar = () => {
                   to="/sports/7"
                 >
                   <img className="img-fluid" src="/assets/icon-7.svg" />
-                  <span className="align-middle">Horse Racing</span>
+                  <span className="align-middle">
+                    {" "}
+                    {languageValue(valueByLanguage, LanguageKey.HORSE)}
+                  </span>
                 </Link>
               </li>
               <li className="sidebar-item">
@@ -188,7 +204,10 @@ const LeftSidebar = () => {
                   to="/sports/4339"
                 >
                   <img className="img-fluid" src="/assets/icon-4339.svg" />
-                  <span className="align-middle">Greyhound Racing</span>
+                  <span className="align-middle">
+                    {" "}
+                    {languageValue(valueByLanguage, LanguageKey.GREYHOUND)}
+                  </span>
                 </Link>
               </li>
 
@@ -199,7 +218,10 @@ const LeftSidebar = () => {
                   to="/sports/5"
                 >
                   <img className="img-fluid" src="/assets/icon-99994.svg" />
-                  <span className="align-middle">Kabaddi</span>
+                  <span className="align-middle">
+                    {" "}
+                    {languageValue(valueByLanguage, LanguageKey.KABADDI)}
+                  </span>
                 </Link>
               </li>
             </div>

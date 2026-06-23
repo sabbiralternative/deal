@@ -13,8 +13,12 @@ import {
 } from "../../../redux/features/global/globalSlice";
 import toast from "react-hot-toast";
 import useCloseModalClickOutside from "../../../hooks/closeModal";
+import { useLanguage } from "../../../context/LanguageProvider";
+import { languageValue } from "../../../hooks/language";
+import { LanguageKey } from "../../../const";
 
 const ForgotPassword = () => {
+  const { valueByLanguage } = useLanguage();
   const ref = useRef();
   const { logo } = useLogo();
   const [timer, setTimer] = useState(null);
@@ -206,7 +210,10 @@ const ForgotPassword = () => {
                         </div>
 
                         <button type="submit" className="btn_login mb-2">
-                          Change Password
+                          {languageValue(
+                            valueByLanguage,
+                            LanguageKey.CHANGE_PASSWORD,
+                          )}
                         </button>
                       </form>
                     </div>

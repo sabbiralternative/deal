@@ -4,8 +4,12 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { Settings } from "../../../api";
 import { setShowLoginModal } from "../../../redux/features/global/globalSlice";
 import WarningCondition from "../../shared/WarningCondition/WarningCondition";
+import { useLanguage } from "../../../context/LanguageProvider";
+import { languageValue } from "../../../hooks/language";
+import { LanguageKey } from "../../../const";
 
 const SportsTab = () => {
+  const { valueByLanguage } = useLanguage();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { eventTypeId } = useParams();
@@ -74,7 +78,7 @@ const SportsTab = () => {
               id="tab-4"
               src="/assets/icon-4.svg"
             />{" "}
-            Cricket
+            {languageValue(valueByLanguage, LanguageKey.CRICKET)}
           </Link>
         </li>
         <li className="nav-item">
@@ -92,7 +96,7 @@ const SportsTab = () => {
               id="tab-1"
               src="/assets/icon-1.svg"
             />{" "}
-            Football
+            {languageValue(valueByLanguage, LanguageKey.FOOTBALL)}
           </Link>
         </li>
         <li className="nav-item">
@@ -110,7 +114,7 @@ const SportsTab = () => {
               id="tab-2"
               src="/assets/icon-2.svg"
             />{" "}
-            Tennis
+            {languageValue(valueByLanguage, LanguageKey.TENNIS)}
           </Link>
         </li>
         <li className="nav-item">
@@ -183,7 +187,7 @@ const SportsTab = () => {
               id="tab-7"
               src="/assets/icon-7.svg"
             />{" "}
-            Horse Racing
+            {languageValue(valueByLanguage, LanguageKey.HORSE)}
           </Link>
         </li>
         <li className="nav-item">
@@ -201,7 +205,7 @@ const SportsTab = () => {
               id="tab-4339"
               src="/assets/icon-4339.svg"
             />{" "}
-            Greyhound Racing
+            {languageValue(valueByLanguage, LanguageKey.GREYHOUND)}
           </Link>
         </li>
 
@@ -220,7 +224,7 @@ const SportsTab = () => {
               id="tab-99994"
               src="/assets/icon-99994.svg"
             />{" "}
-            Kabaddi
+            {languageValue(valueByLanguage, LanguageKey.KABADDI)}
           </Link>
         </li>
       </ul>

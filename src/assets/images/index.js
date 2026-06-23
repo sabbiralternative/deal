@@ -71,7 +71,9 @@ import profileWallet from "../img/profile-wallet.svg";
 import deposit from "../img/depositProfileIcon.svg";
 import withdraw from "../img/withdrawIcon.svg";
 import ladder from "../img/ladder.png";
+import globe from "../img/globe.gif";
 export default {
+  globe,
   ladder,
   telegram,
   trc,

@@ -14,8 +14,12 @@ import {
 } from "../../../redux/features/global/globalSlice";
 import toast from "react-hot-toast";
 import useCloseModalClickOutside from "../../../hooks/closeModal";
+import { useLanguage } from "../../../context/LanguageProvider";
+import { languageValue } from "../../../hooks/language";
+import { LanguageKey } from "../../../const";
 
 const Login = () => {
+  const { valueByLanguage } = useLanguage();
   const ref = useRef(null);
   const { closePopupForForever } = useSelector((state) => state.global);
   const navigate = useNavigate();
@@ -159,7 +163,10 @@ const Login = () => {
                       <img className="img-fluid" src={logo} />
                     </div>
                     <div className="modal_login">
-                      <h2>login</h2>
+                      <h2>
+                        {" "}
+                        {languageValue(valueByLanguage, LanguageKey.LOGIN)}
+                      </h2>
                       <form
                         onSubmit={handleSubmit(onSubmit)}
                         className="ng-untouched ng-pristine ng-invalid"
@@ -211,7 +218,7 @@ const Login = () => {
                         </p>
 
                         <button type="submit" className="btn_login mb-2">
-                          login
+                          {languageValue(valueByLanguage, LanguageKey.LOGIN)}
                         </button>
                         <button
                           onClick={loginWithDemo}
@@ -233,7 +240,10 @@ const Login = () => {
                             }}
                             type="button"
                           >
-                            Sign Up
+                            {languageValue(
+                              valueByLanguage,
+                              LanguageKey.REGISTER,
+                            )}
                           </button>
                         </div>
                       </form>

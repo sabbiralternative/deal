@@ -20,8 +20,15 @@ import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import Search from "./Search";
 import Dropdown from "./Dropdown";
 import { useLogo } from "../../../context/ApiProvider";
+import { useLanguage } from "../../../context/LanguageProvider";
+import images from "../../../assets/images";
+import Language from "../../modals/Language";
+import { languageValue } from "../../../hooks/language";
+import { LanguageKey } from "../../../const";
 
 const Header = () => {
+  const { language, valueByLanguage, setLanguage } = useLanguage();
+  const [showLanguage, setShowLanguage] = useState(false);
   const navigate = useNavigate();
   const { logo } = useLogo();
 
@@ -83,6 +90,10 @@ const Header = () => {
     }
   }, [stored_build_version]);
 
+  useEffect(() => {
+    setLanguage(localStorage.getItem("language") || "english");
+  }, [setLanguage]);
+
   if (Settings.app_only && !closePopupForForever) {
     return <Error />;
   }
@@ -115,7 +126,10 @@ const Header = () => {
 
           <Search />
           <div className="navbar-collapse collapse">
-            <ul className="navbar-nav navbar-align">
+            <ul
+              style={{ alignItems: "center" }}
+              className="navbar-nav navbar-align"
+            >
               {!token && (
                 <Fragment>
                   <li className="mx-1">
@@ -123,7 +137,7 @@ const Header = () => {
                       onClick={() => dispatch(setShowLoginModal(true))}
                       className="loguser"
                     >
-                      login
+                      {languageValue(valueByLanguage, LanguageKey.LOGIN)}
                     </a>
                   </li>
 
@@ -131,7 +145,10 @@ const Header = () => {
                     <button
                       onClick={() => dispatch(setShowRegisterModal(true))}
                     >
-                      <a className="loguser">Register</a>
+                      <a className="loguser">
+                        {" "}
+                        {languageValue(valueByLanguage, LanguageKey.REGISTER)}
+                      </a>
                     </button>
                   </li>
                 </Fragment>
@@ -216,6 +233,46 @@ const Header = () => {
 
               <li className="nav-item">
                 <div className="bal_exp mhide"></div>
+              </li>
+              <li style={{ position: "relative" }} className="">
+                {Settings.language && (
+                  <button
+                    // className="loguser"
+                    onClick={() => setShowLanguage((prev) => !prev)}
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "end",
+                        background: "transparent",
+                        border: "none",
+                      }}
+                    >
+                      <img
+                        style={{
+                          height: "20px",
+                          width: "20px",
+                          filter: "invert(0)",
+                        }}
+                        src={images.globe}
+                        alt=""
+                      />
+                      <b
+                        style={{
+                          margin: "0px",
+                          fontSize: "10px",
+                          textTransform: "capitalize",
+                          color: "#fff",
+                        }}
+                      >
+                        {language || "EN"}
+                      </b>
+                    </div>
+                  </button>
+                )}
+                {showLanguage && <Language setShowLanguage={setShowLanguage} />}
               </li>
             </ul>
           </div>
