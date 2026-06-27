@@ -13,6 +13,8 @@ import Fancy from "../../components/modules/EventDetails/Fancy";
 import HorseGreyhoundEventDetails from "../../components/modules/EventDetails/HorseGreyhoundEventDetails";
 import RightSidebar from "../../components/modules/EventDetails/RightSidebar";
 import Score from "../../components/modules/EventDetails/Score";
+import TennisScore from "../../components/modules/EventDetails/TennisScore";
+import FootballScore from "../../components/modules/EventDetails/FootballScore";
 
 const EventDetails = () => {
   const [sportsVideo, { data: iframe }] = useVideoMutation();
@@ -155,6 +157,12 @@ const EventDetails = () => {
                     <em> {data?.result?.[0]?.openDate}</em>
                   </span>
                 </h2>
+                {eventTypeId == 2 && data?.score && (
+                  <TennisScore eventTypeId={eventTypeId} score={data?.score} />
+                )}
+                {eventTypeId == 1 && data?.score && (
+                  <FootballScore score={data?.score} />
+                )}
                 {iframe?.result?.url && data?.score?.hasVideo && (
                   <div
                     id="collapseBasic"

@@ -4,8 +4,8 @@
 .tennis-score-wrapper {
   color: var(--color-primary);
   width: 100%;
-  background-color: var(--theme-primary1);
-  padding: 0px 10px;
+  background-color: white;
+  padding: 5px 10px;
 }
 
 /* ── Inner Column ── */
