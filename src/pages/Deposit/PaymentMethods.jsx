@@ -118,7 +118,9 @@ const PaymentMethods = ({
                       {method?.type == "bank" && (
                         <CiBank size={20} color="gray" />
                       )}
-                      {method?.type == "upi" || method?.type == "pg" ? (
+                      {method?.type == "upi" ||
+                      method?.type == "pg" ||
+                      method?.gateway === 1 ? (
                         <img
                           style={{ height: "20px", width: "20px" }}
                           src={images.upi}
