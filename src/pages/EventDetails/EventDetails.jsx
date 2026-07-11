@@ -15,6 +15,7 @@ import RightSidebar from "../../components/modules/EventDetails/RightSidebar";
 import Score from "../../components/modules/EventDetails/Score";
 import TennisScore from "../../components/modules/EventDetails/TennisScore";
 import FootballScore from "../../components/modules/EventDetails/FootballScore";
+import Premium from "../../components/modules/EventDetails/Premium";
 
 const EventDetails = () => {
   const [sportsVideo, { data: iframe }] = useVideoMutation();
@@ -157,9 +158,14 @@ const EventDetails = () => {
                     <em> {data?.result?.[0]?.openDate}</em>
                   </span>
                 </h2>
-                {eventTypeId == 2 && data?.score && (
-                  <TennisScore eventTypeId={eventTypeId} score={data?.score} />
-                )}
+                {eventTypeId == 2 &&
+                  data?.score &&
+                  Object.keys(data?.score).length > 1 && (
+                    <TennisScore
+                      eventTypeId={eventTypeId}
+                      score={data?.score}
+                    />
+                  )}
                 {eventTypeId == 1 && data?.score && (
                   <FootballScore score={data?.score} />
                 )}
@@ -195,6 +201,9 @@ const EventDetails = () => {
                     <Score iscore={data?.iscore} />
                   )}
                   {matchOdds?.length > 0 && <MatchOdds data={matchOdds} />}
+                  {data?.premium && data?.premium?.eventId && (
+                    <Premium premium={data?.premium} />
+                  )}
                   {bookmaker?.length > 0 && <Bookmaker data={bookmaker} />}
                   {data?.result?.length > 0 && <Fancy data={data?.result} />}
                   {eventTypeId == 7 || eventTypeId == 4339 ? (
