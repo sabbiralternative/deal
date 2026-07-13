@@ -14,6 +14,7 @@ import Search from "../Header/Search";
 import { useLanguage } from "../../../context/LanguageProvider";
 import { languageValue } from "../../../hooks/language";
 import { LanguageKey } from "../../../const";
+import { eventNameList } from "../../../static/event-name-list";
 
 const LeftSidebar = () => {
   const { valueByLanguage } = useLanguage();
@@ -224,6 +225,20 @@ const LeftSidebar = () => {
                   </span>
                 </Link>
               </li>
+              {eventNameList.map((item) => {
+                return (
+                  <li key={item.id} className="sidebar-item">
+                    <Link
+                      data-bs-toggle="collapse"
+                      className="sidebar-link"
+                      to={`/sports/${item.id}`}
+                    >
+                      <img className="img-fluid" src={item.image} />
+                      <span className="align-middle"> {item.name}</span>
+                    </Link>
+                  </li>
+                );
+              })}
             </div>
           </ul>
         </div>

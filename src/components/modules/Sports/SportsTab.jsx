@@ -7,6 +7,7 @@ import WarningCondition from "../../shared/WarningCondition/WarningCondition";
 import { useLanguage } from "../../../context/LanguageProvider";
 import { languageValue } from "../../../hooks/language";
 import { LanguageKey } from "../../../const";
+import { eventNameList } from "../../../static/event-name-list";
 
 const SportsTab = () => {
   const { valueByLanguage } = useLanguage();
@@ -227,6 +228,24 @@ const SportsTab = () => {
             {languageValue(valueByLanguage, LanguageKey.KABADDI)}
           </Link>
         </li>
+        {eventNameList.map((item) => {
+          return (
+            <li key={item.id} className="nav-item">
+              <Link
+                to={`/sports/${item.id}`}
+                role="tab"
+                className={`nav-link ${getActiveClass(item.id)}`}
+                aria-controls
+                aria-selected="false"
+                id
+              >
+                <span />
+                <img className="img-fluid" id="tab-99994" src={item.image} />
+                {item.name}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </Fragment>
   );
