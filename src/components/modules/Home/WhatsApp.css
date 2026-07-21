@@ -35,6 +35,9 @@
 }
 
 .social-fab--whatsapp {
-  top: calc(100dvh - 120px);
+  top: calc(100dvh - 170px);
   left: 0.75rem; /* left-3 */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
