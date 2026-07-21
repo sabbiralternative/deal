@@ -27,7 +27,7 @@ import { languageValue } from "../../../hooks/language";
 import { LanguageKey } from "../../../const";
 
 const Header = () => {
-  const { language, valueByLanguage, setLanguage } = useLanguage();
+  const { valueByLanguage, setLanguage } = useLanguage();
   const [showLanguage, setShowLanguage] = useState(false);
   const navigate = useNavigate();
   const { logo } = useLogo();
@@ -267,7 +267,7 @@ const Header = () => {
                           color: "#fff",
                         }}
                       >
-                        {language || "EN"}
+                        {/* {language || "EN"} */}
                       </b>
                     </div>
                   </button>
