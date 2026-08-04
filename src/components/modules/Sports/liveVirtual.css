@@ -1,0 +1,68 @@
+ul.live_virtual {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  float: right;
+  margin-bottom: 0px !important;
+  background: transparent;
+}
+ul.live_virtual li {
+  display: inline;
+  position: relative;
+  cursor: pointer;
+}
+ul.live_virtual li input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  cursor: pointer;
+}
+ul.live_virtual li label {
+  display: inline-block;
+  border: 1px solid rgb(178, 178, 178);
+  color: white;
+  border-radius: 25px;
+  white-space: nowrap;
+  margin: 3px 1px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: all 0.2s;
+  font-weight: 600;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+}
+ul.live_virtual li label::before {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 400;
+  font-size: 12px;
+  padding-right: 2px;
+  content: "+";
+  transition: transform 0.3s ease-in-out;
+}
+ul.live_virtual li input[type="checkbox"]:checked + label::before {
+  content: "✓";
+  transform: rotate(-360deg);
+  transition: transform 0.3s ease-in-out;
+}
+ul.live_virtual li input[type="checkbox"]:checked + label {
+  border: 1px solid var(--theme-primary);
+  background-color: var(--theme-primary);
+  color: #000;
+  transition: all 0.2s;
+}

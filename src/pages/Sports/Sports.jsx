@@ -4,23 +4,33 @@ import SportsTab from "../../components/modules/Sports/SportsTab";
 import { EVENT_NAMES } from "../../const";
 import Casino from "../../components/modules/Sports/Casino";
 import HorseGreyhound from "../../components/modules/Sports/HorseGreyhound";
+import { useState } from "react";
+import LiveVirtual from "../../components/modules/Sports/LiveVirtual";
+import { FilterLiveVirtual } from "../../utils/filter-live-virtual";
 
 const Sports = () => {
+  const [liveVirtual, setLiveVirtual] = useState([]);
   const navigate = useNavigate();
   const { eventTypeId } = useParams();
   const { data } = useGroupQuery({
     sportsType: Number(eventTypeId),
   });
 
-  const groupedData =
-    data && data !== null && Object.keys(data).length > 0
-      ? Object.entries(data)
-          .filter(([, value]) => value.visible === true)
-          .sort(([, a], [, b]) => {
-            return b.inPlay - a.inPlay;
-          })
-      : [];
+  // const groupedData =
+  //   data && data !== null && Object.keys(data).length > 0
+  //     ? Object.entries(data)
+  //         .filter(([, value]) => value.visible === true)
+  //         .sort(([, a], [, b]) => {
+  //           return b.inPlay - a.inPlay;
+  //         })
+  //     : [];
 
+  const groupedData = FilterLiveVirtual(
+    liveVirtual,
+    Number(eventTypeId),
+    data,
+    1,
+  );
   const navigateGameList = (eventTypeId, keys) => {
     navigate(`/event-details/${eventTypeId}/${keys}`);
   };
@@ -33,8 +43,7 @@ const Sports = () => {
             <SportsTab />
             {eventTypeId != 7 &&
               eventTypeId != 4339 &&
-              eventTypeId != "casino" &&
-              groupedData?.length > 0 && (
+              eventTypeId != "casino" && (
                 <div className="tab-content">
                   <div
                     role="tabpanel"
@@ -53,9 +62,19 @@ const Sports = () => {
                             aria-expanded="true"
                             aria-controls="sports_accordion-inplay"
                             className="accordion-button"
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "space-between",
+                            }}
                           >
-                            {EVENT_NAMES[Number(eventTypeId)]}
+                            <span> {EVENT_NAMES[Number(eventTypeId)]}</span>
+                            <LiveVirtual
+                              setLiveVirtual={setLiveVirtual}
+                              category={Number(eventTypeId)}
+                            />
                           </a>
+
                           <div
                             id="sports_accordion-inplay"
                             className="accordion-collapse collapse show"
