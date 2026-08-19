@@ -5,8 +5,11 @@ import { MdOutlinePendingActions } from "react-icons/md";
 import { useAccountStatement } from "../../hooks/accountStatement";
 import { Settings } from "../../api";
 import Complaint from "../../components/modals/Complaint/Complaint";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../const";
 
 const DepositReport = () => {
+  const { getLanguage } = useLanguage();
   const [complaintId, setComplaintId] = useState(null);
   const fromDate = new Date(new Date().setDate(new Date().getDate() - 7))
     .toISOString()
@@ -159,7 +162,7 @@ const DepositReport = () => {
                                 }
                                 className="px-2 py-1  text-white   "
                               >
-                                Report Issue
+                                {getLanguage(LanguageKey.REPORT_ISSUE)}
                               </button>
                             )}
                             {/* <span className="right-bottom-date ">
@@ -184,7 +187,7 @@ const DepositReport = () => {
               marginTop: "20px",
             }}
           >
-            <p>No transaction yet!</p>
+            <p>{getLanguage(LanguageKey.NO_TRANSACTION_YET)}!</p>
           </div>
         )}
       </div>

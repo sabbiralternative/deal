@@ -15,12 +15,11 @@ import {
 } from "../../../redux/features/global/globalSlice";
 import toast from "react-hot-toast";
 import useCloseModalClickOutside from "../../../hooks/closeModal";
-import { useLanguage } from "../../../context/LanguageProvider";
-import { languageValue } from "../../../hooks/language";
 import { LanguageKey } from "../../../const";
+import useLanguage from "../../../hooks/use-language";
 
 const Register = () => {
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const affnook_token = localStorage.getItem("affnook_token");
   const ref = useRef();
   const referralCode = localStorage.getItem("referralCode");
@@ -159,10 +158,7 @@ const Register = () => {
                       <img className="img-fluid" src={logo} />
                     </div>
                     <div className="modal_login">
-                      <h2>
-                        {" "}
-                        {languageValue(valueByLanguage, LanguageKey.REGISTER)}
-                      </h2>
+                      <h2> {getLanguage(LanguageKey.REGISTER)}</h2>
                       <form
                         onSubmit={handleSubmit(onSubmit)}
                         className="ng-untouched ng-pristine ng-invalid"
@@ -178,7 +174,7 @@ const Register = () => {
                           <div className="input-group-prepend">
                             {timer ? (
                               <button type="button" style={{ color: "white" }}>
-                                Retry in {timer}
+                                {getLanguage(LanguageKey.RETRY_IN)} {timer}
                               </button>
                             ) : (
                               <button
@@ -187,7 +183,7 @@ const Register = () => {
                                 type="button"
                                 disabled={Settings.otp && mobile?.length < 10}
                               >
-                                Get OTP
+                                {getLanguage(LanguageKey.GET_OTP_ON_MESSAGE)}
                               </button>
                             )}
                           </div>
@@ -261,7 +257,7 @@ const Register = () => {
                         </div>
 
                         <button type="submit" className="btn_login mb-2">
-                          {languageValue(valueByLanguage, LanguageKey.REGISTER)}
+                          {getLanguage(LanguageKey.REGISTER)}
                         </button>
                         <div className="text-center" style={{ color: "white" }}>
                           Already have account?{" "}
@@ -276,7 +272,7 @@ const Register = () => {
                             }}
                             type="button"
                           >
-                            {languageValue(valueByLanguage, LanguageKey.LOGIN)}
+                            {getLanguage(LanguageKey.LOGIN)}
                           </button>
                         </div>
                       </form>

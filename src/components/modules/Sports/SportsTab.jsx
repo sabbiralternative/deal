@@ -4,13 +4,12 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { Settings } from "../../../api";
 import { setShowLoginModal } from "../../../redux/features/global/globalSlice";
 import WarningCondition from "../../shared/WarningCondition/WarningCondition";
-import { useLanguage } from "../../../context/LanguageProvider";
-import { languageValue } from "../../../hooks/language";
 import { LanguageKey } from "../../../const";
 import { eventNameList } from "../../../static/event-name-list";
+import useLanguage from "../../../hooks/use-language";
 
 const SportsTab = () => {
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { eventTypeId } = useParams();
@@ -61,7 +60,7 @@ const SportsTab = () => {
               id="tab-in_play"
               src="/assets/icon-in_play.svg"
             />{" "}
-            Inplay
+            {getLanguage(LanguageKey.IN_PLAY)}
           </Link>
         </li>
         <li className="nav-item ">
@@ -79,7 +78,7 @@ const SportsTab = () => {
               id="tab-4"
               src="/assets/icon-4.svg"
             />{" "}
-            {languageValue(valueByLanguage, LanguageKey.CRICKET)}
+            {getLanguage(LanguageKey.CRICKET)}
           </Link>
         </li>
         <li className="nav-item">
@@ -97,7 +96,7 @@ const SportsTab = () => {
               id="tab-1"
               src="/assets/icon-1.svg"
             />{" "}
-            {languageValue(valueByLanguage, LanguageKey.FOOTBALL)}
+            {getLanguage(LanguageKey.FOOTBALL)}
           </Link>
         </li>
         <li className="nav-item">
@@ -115,7 +114,7 @@ const SportsTab = () => {
               id="tab-2"
               src="/assets/icon-2.svg"
             />{" "}
-            {languageValue(valueByLanguage, LanguageKey.TENNIS)}
+            {getLanguage(LanguageKey.TENNIS)}
           </Link>
         </li>
         <li className="nav-item">
@@ -133,7 +132,7 @@ const SportsTab = () => {
               id="tab-2378961"
               src="/assets/icon-2378961.svg"
             />{" "}
-            Politics
+            {getLanguage(LanguageKey.POLITICS)}
           </Link>
         </li>
 
@@ -152,7 +151,7 @@ const SportsTab = () => {
               id="tab-99998"
               src="/assets/icon-casino.svg"
             />{" "}
-            Casino
+            {getLanguage(LanguageKey.CASINO)}
           </Link>
         </li>
         <li className="nav-item">
@@ -170,7 +169,7 @@ const SportsTab = () => {
               id="tab-99991"
               src="/assets/icon-99991.svg"
             />{" "}
-            Sports book
+            {getLanguage(LanguageKey.SPORTSBOOK)}
           </a>
         </li>
         <li className="nav-item">
@@ -188,7 +187,7 @@ const SportsTab = () => {
               id="tab-7"
               src="/assets/icon-7.svg"
             />{" "}
-            {languageValue(valueByLanguage, LanguageKey.HORSE)}
+            {getLanguage(LanguageKey.HORSE)}
           </Link>
         </li>
         <li className="nav-item">
@@ -206,7 +205,7 @@ const SportsTab = () => {
               id="tab-4339"
               src="/assets/icon-4339.svg"
             />{" "}
-            {languageValue(valueByLanguage, LanguageKey.GREYHOUND)}
+            {getLanguage(LanguageKey.GREYHOUND)}
           </Link>
         </li>
 
@@ -225,7 +224,7 @@ const SportsTab = () => {
               id="tab-99994"
               src="/assets/icon-99994.svg"
             />{" "}
-            {languageValue(valueByLanguage, LanguageKey.KABADDI)}
+            {getLanguage(LanguageKey.KABADDI)}
           </Link>
         </li>
         {eventNameList.map((item) => {
@@ -241,7 +240,7 @@ const SportsTab = () => {
               >
                 <span />
                 <img className="img-fluid" id="tab-99994" src={item.image} />
-                {item.name}
+                {getLanguage(item.name)}
               </Link>
             </li>
           );

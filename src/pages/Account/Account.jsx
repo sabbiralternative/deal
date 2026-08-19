@@ -2,8 +2,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../redux/features/auth/authSlice";
 import { Settings } from "../../api";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../const";
 
 const Account = () => {
+  const { getLanguage } = useLanguage();
   const { closePopupForForever } = useSelector((state) => state.global);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -35,7 +38,7 @@ const Account = () => {
           </div>
 
           <div className="setting-one-click-bet-sec">
-            <span>Member ID: &nbsp; </span>
+            <span>{getLanguage(LanguageKey.USER_ID)}: &nbsp; </span>
             <div className="iconText">
               <span className="exp_bal_amo-size">{memberId}</span>
               <span className="edit_icon">
@@ -47,57 +50,57 @@ const Account = () => {
           <ul>
             <li>
               <Link to="/deposit" className>
-                Deposit
+                {getLanguage(LanguageKey.DEPOSIT)}
               </Link>
             </li>
             <li>
               <Link to="/withdraw" className>
-                Withdraw
+                {getLanguage(LanguageKey.WITHDRAW)}
               </Link>
             </li>
             <li>
               <Link to="/deposit-withdraw-report" className>
-                Deposit Withdraw Report
+                {getLanguage(LanguageKey.DEPOSIT_WITHDRAW_REPORT)}
               </Link>
             </li>
             <li>
               <Link to="/betting-profit-loss" className>
-                Betting Profit Loss
+                {getLanguage(LanguageKey.BETTING_PROFIT_AND_LOSS)}
               </Link>
             </li>
 
             <li>
               <Link to="/my-bank-details" className>
-                My Bank Details
+                {getLanguage(LanguageKey.MY_BANK_DETAILS)}
               </Link>
             </li>
             <li>
               <Link to="/bonus-statement" className>
-                Bonus Statement
+                {getLanguage(LanguageKey.BONUS_STATEMENT)}
               </Link>
             </li>
             {Settings?.referral && (
               <li>
                 <Link to="/affiliate" className>
-                  Affiliate
+                  {getLanguage(LanguageKey.AFFILIATE)}
                 </Link>
               </li>
             )}
 
             <li>
               <Link to="/promotions" className>
-                Promos & Bonus
+                {getLanguage(LanguageKey.PROMOTION_AND_BONUSES)}
               </Link>
             </li>
             <li>
               <Link to="/lossback-bonus" className>
-                Lossback Bonus
+                {getLanguage(LanguageKey.LOSSBACK_BONUS)}
               </Link>
             </li>
             {closePopupForForever && (
               <li>
                 <Link to="/app-only-bonus" className>
-                  App Only Bonus
+                  {getLanguage(LanguageKey.APP_ONLY_BONUS)}
                 </Link>
               </li>
             )}
@@ -111,7 +114,7 @@ const Account = () => {
             data-bs-toggle="modal"
             data-bs-target="#logoutmodal"
           >
-            LOGOUT
+            {getLanguage(LanguageKey.LOGOUT)}
             <img
               src="/assets/sign-out-DPrmzSef.png"
               alt="sign"

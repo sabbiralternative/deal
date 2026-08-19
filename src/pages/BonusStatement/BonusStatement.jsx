@@ -3,19 +3,34 @@ import toast from "react-hot-toast";
 import moment from "moment/moment";
 import { AxiosSecure } from "../../lib/AxiosSecure";
 import { useBonusQuery } from "../../hooks/bonus";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../const";
 
 const BonusStatement = () => {
+  const { getLanguage } = useLanguage();
   const { data, refetch } = useBonusQuery({
     type: "viewStatement",
   });
 
   const handleShowMessage = (item) => {
     if (item?.is_claimed == 1) {
-      return <span style={{ color: "green" }}>Bonus Claimed</span>;
+      return (
+        <span style={{ color: "green" }}>
+          {getLanguage(LanguageKey.BONUS_CLAIMED)}
+        </span>
+      );
     } else if (item?.is_claimed == 2) {
-      return <span style={{ color: "orange" }}>Claim Pending</span>;
+      return (
+        <span style={{ color: "orange" }}>
+          {getLanguage(LanguageKey.CLAIM_PENDING)}
+        </span>
+      );
     } else if (item?.is_claimed == 3) {
-      return <span style={{ color: "red" }}>Rejected</span>;
+      return (
+        <span style={{ color: "red" }}>
+          {getLanguage(LanguageKey.REJECTED)}
+        </span>
+      );
     } else if (item?.is_claimed == 0) {
       if (item?.is_wagering_complete == 1) {
         return (
@@ -30,11 +45,15 @@ const BonusStatement = () => {
             }}
             onClick={() => handleClaimBonus(item)}
           >
-            Claim
+            {getLanguage(LanguageKey.CLAIM)}
           </button>
         );
       } else if (item?.is_wagering_complete == 0) {
-        return <span style={{ color: "red" }}>Wagering Incomplete</span>;
+        return (
+          <span style={{ color: "red" }}>
+            {getLanguage(LanguageKey.WAGERING_INCOMPLETE)}
+          </span>
+        );
       }
     }
   };
@@ -118,7 +137,7 @@ const BonusStatement = () => {
                           gap: "0.25rem",
                         }}
                       >
-                        <span>Bonus Amount:</span>
+                        <span>{getLanguage(LanguageKey.BONUS_AMOUNT)}:</span>
                         <span style={{ fontWeight: 600, color: "green" }}>
                           ₹ {item.amount}
                         </span>
@@ -132,7 +151,9 @@ const BonusStatement = () => {
                           gap: "0.25rem",
                         }}
                       >
-                        <span>Wagering Required:</span>
+                        <span>
+                          {getLanguage(LanguageKey.WAGERING_REQUIRED)}:
+                        </span>
                         <span
                           style={{
                             fontWeight: 600,
@@ -166,7 +187,9 @@ const BonusStatement = () => {
                           gap: "0.25rem",
                         }}
                       >
-                        <span>Wagering Complete Amount:</span>
+                        <span>
+                          {getLanguage(LanguageKey.WAGERING_COMPLETED_AMOUNT)}:
+                        </span>
                         <span
                           style={{
                             fontWeight: 600,
@@ -190,7 +213,7 @@ const BonusStatement = () => {
                           gap: "0.25rem",
                         }}
                       >
-                        <span>Date Added:</span>
+                        <span>{getLanguage(LanguageKey.DATE_ADDED)}:</span>
                         <span style={{ fontWeight: 600 }}>
                           {" "}
                           {formateDate(item?.date_added)}
@@ -220,7 +243,7 @@ const BonusStatement = () => {
                           gap: "0.25rem",
                         }}
                       >
-                        <span>Expiry Date:</span>
+                        <span>{getLanguage(LanguageKey.EXPIRY_DATE)}:</span>
                         <span style={{ fontWeight: 600 }}>
                           {formateDate(item?.expiry_date)}
                         </span>
@@ -281,7 +304,7 @@ const BonusStatement = () => {
                           gap: "0.25rem",
                         }}
                       >
-                        <span>Bonus Amount:</span>
+                        <span>{getLanguage(LanguageKey.BONUS_AMOUNT)}:</span>
                         <span style={{ fontWeight: 600, color: "green" }}>
                           ₹ {item.amount}
                         </span>
@@ -295,7 +318,7 @@ const BonusStatement = () => {
                           gap: "0.25rem",
                         }}
                       >
-                        <span>Date Added:</span>
+                        <span>{getLanguage(LanguageKey.DATE_ADDED)}:</span>
                         <span style={{ fontWeight: 600 }}>
                           {" "}
                           {formateDate(item?.date_added)}
@@ -344,7 +367,9 @@ const BonusStatement = () => {
                 paddingTop: "5rem",
               }}
             >
-              <h2 style={{ fontSize: "1rem" }}>No bonus statement yet!</h2>
+              <h2 style={{ fontSize: "1rem" }}>
+                {getLanguage(LanguageKey.NO_BONUS_STATEMENT_YET)}!
+              </h2>
             </div>
           )}
         </div>

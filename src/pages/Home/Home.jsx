@@ -5,12 +5,11 @@ import WhatsApp from "../../components/modules/Home/WhatsApp";
 import { useLotusHomeLobby } from "../../hooks/lotusHomeLobby";
 import Originals from "../../components/modules/Home/Originals";
 import IndianCardGames from "../../components/modules/Home/IndianCardGames";
-import { useLanguage } from "../../context/LanguageProvider";
-import { languageValue } from "../../hooks/language";
 import { LanguageKey } from "../../const";
+import useLanguage from "../../hooks/use-language";
 
 const Home = () => {
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const { data: bannerImage } = useBannerImage();
   const navigate = useNavigate();
   const { data: lotusLobby } = useLotusHomeLobby();
@@ -48,13 +47,7 @@ const Home = () => {
                                 src="/assets/sport_4.png"
                               />
                               <div className="slg_content">
-                                <span>
-                                  {" "}
-                                  {languageValue(
-                                    valueByLanguage,
-                                    LanguageKey.CRICKET,
-                                  )}
-                                </span>
+                                <span> {getLanguage(LanguageKey.CRICKET)}</span>
                               </div>
                             </div>
                             <div
@@ -69,10 +62,7 @@ const Home = () => {
                               <div className="slg_content">
                                 <span>
                                   {" "}
-                                  {languageValue(
-                                    valueByLanguage,
-                                    LanguageKey.FOOTBALL,
-                                  )}
+                                  {getLanguage(LanguageKey.FOOTBALL)}
                                 </span>
                               </div>
                             </div>
@@ -86,13 +76,7 @@ const Home = () => {
                                 src="/assets/sport_2.png"
                               />
                               <div className="slg_content">
-                                <span>
-                                  {" "}
-                                  {languageValue(
-                                    valueByLanguage,
-                                    LanguageKey.TENNIS,
-                                  )}
-                                </span>
+                                <span> {getLanguage(LanguageKey.TENNIS)}</span>
                               </div>
                             </div>
                             <div
@@ -105,7 +89,7 @@ const Home = () => {
                                 src="/assets/sport_2378961.png"
                               />
                               <div className="slg_content">
-                                <span>Politics</span>
+                                <span>{getLanguage(LanguageKey.POLITICS)}</span>
                               </div>
                             </div>
                             <div
@@ -118,7 +102,9 @@ const Home = () => {
                                 src="/assets/sport_99998.png"
                               />
                               <div className="slg_content">
-                                <span>Int Casino</span>
+                                <span>
+                                  {getLanguage(LanguageKey.INT_CASINO)}
+                                </span>
                               </div>
                             </div>
                             <div
@@ -131,7 +117,9 @@ const Home = () => {
                                 src="/assets/sport_99991.png"
                               />
                               <div className="slg_content">
-                                <span>Sports book</span>
+                                <span>
+                                  {getLanguage(LanguageKey.SPORTSBOOK)}
+                                </span>
                               </div>
                             </div>
                             <div
@@ -144,13 +132,7 @@ const Home = () => {
                                 src="/assets/sport_7.png"
                               />
                               <div className="slg_content">
-                                <span>
-                                  {" "}
-                                  {languageValue(
-                                    valueByLanguage,
-                                    LanguageKey.HORSE,
-                                  )}
-                                </span>
+                                <span> {getLanguage(LanguageKey.HORSE)}</span>
                               </div>
                             </div>
                             <div
@@ -165,10 +147,7 @@ const Home = () => {
                               <div className="slg_content">
                                 <span>
                                   {" "}
-                                  {languageValue(
-                                    valueByLanguage,
-                                    LanguageKey.GREYHOUND,
-                                  )}
+                                  {getLanguage(LanguageKey.GREYHOUND)}
                                 </span>
                               </div>
                             </div>
@@ -183,13 +162,7 @@ const Home = () => {
                                 src="/assets/sport_99994.png"
                               />
                               <div className="slg_content">
-                                <span>
-                                  {" "}
-                                  {languageValue(
-                                    valueByLanguage,
-                                    LanguageKey.KABADDI,
-                                  )}
-                                </span>
+                                <span> {getLanguage(LanguageKey.KABADDI)}</span>
                               </div>
                             </div>
                           </div>

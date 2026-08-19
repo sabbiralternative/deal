@@ -12,8 +12,11 @@ import { handleCashOutPlaceBet } from "../../../utils/handleCashoutPlaceBet";
 import SpeedCashOut from "../../modals/SpeedCashOut/SpeedCashOut";
 import { isGameSuspended } from "../../../utils/isOddSuspended";
 import { setShowLoginModal } from "../../../redux/features/global/globalSlice";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const Bookmaker = ({ data }) => {
+  const { getLanguage } = useLanguage();
   const [speedCashOut, setSpeedCashOut] = useState(null);
   const { eventId } = useParams();
   const [teamProfit, setTeamProfit] = useState([]);
@@ -260,7 +263,7 @@ const Bookmaker = ({ data }) => {
                     className="btn btn_cashout"
                     disabled
                   >
-                    Cashout
+                    {getLanguage(LanguageKey.CASHOUT)}
                   </button>
                 )}
               {Settings.cashout &&
@@ -279,7 +282,7 @@ const Bookmaker = ({ data }) => {
                     disabled={isGameSuspended(game)}
                     className="btn btn_losscut"
                   >
-                    Speed Cashout
+                    {getLanguage(LanguageKey.SPEED_CASHOUT)}
                   </button>
                 )}
 
@@ -312,7 +315,9 @@ const Bookmaker = ({ data }) => {
                     <div className="details_market_div head_bl">
                       <div className="dmd_left">
                         <b className="min-max">
-                          Min: <span>{game?.minLiabilityPerBet}</span> Max:{" "}
+                          {getLanguage(LanguageKey.MIN)}:{" "}
+                          <span>{game?.minLiabilityPerBet}</span>{" "}
+                          {getLanguage(LanguageKey.MAX)}:{" "}
                           <span>{game?.maxLiabilityPerBet}</span>
                         </b>
                       </div>

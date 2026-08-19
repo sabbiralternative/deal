@@ -5,8 +5,11 @@ import { useVideoMutation } from "../../../redux/features/events/events";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Settings } from "../../../api";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const RightSidebar = ({ data }) => {
+  const { getLanguage } = useLanguage();
   const { eventTypeId, eventId } = useParams();
   const [sportsVideo, { data: iframe }] = useVideoMutation();
   const { placeBetValues } = useSelector((state) => state.event);
@@ -27,7 +30,7 @@ const RightSidebar = ({ data }) => {
     <div className="dtl_second">
       {iframe?.result?.url && data?.score?.hasVideo && (
         <div className="live_streaming">
-          <h4>live streaming</h4>
+          <h4>{getLanguage(LanguageKey.LIVE_STREAM)}</h4>
           <div
             id="collapseBasic"
             aria-hidden="true"
@@ -44,11 +47,11 @@ const RightSidebar = ({ data }) => {
       )}
 
       <div className="bet_placing">
-        <h4>bet placing</h4>
+        <h4>{getLanguage(LanguageKey.PLACE_BET)}</h4>
         {placeBetValues && <BetSLip />}
       </div>
       <div className="open_bets">
-        <h4>open bets</h4>
+        <h4>{getLanguage(LanguageKey.OPEN_BETS)}</h4>
         <OpenBets />
       </div>
     </div>

@@ -2,8 +2,11 @@ import { Fragment, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import ShareAffiliateLink from "../../components/modals/Affiliate/ShareAffiliateLink";
 import images from "../../assets/images";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../const";
 
 const Footer = () => {
+  const { getLanguage } = useLanguage();
   const { search } = useLocation();
   const params = new URLSearchParams(search);
   const tab = params.get("tab");
@@ -39,7 +42,7 @@ const Footer = () => {
               loading="lazy"
             />
             <span data-v-066114c4 className="">
-              Dashboard
+              {getLanguage(LanguageKey.DASHBOARD)}
             </span>
           </a>
           <a
@@ -58,7 +61,7 @@ const Footer = () => {
               loading="lazy"
             />
             <span data-v-066114c4 className=" ">
-              User List
+              {getLanguage(LanguageKey.USER_LIST)}
             </span>
           </a>
           <a
@@ -72,7 +75,7 @@ const Footer = () => {
               alt="affi-footer-share"
             />
             <span data-v-066114c4 className="">
-              Share
+              {getLanguage(LanguageKey.SHARE)}
             </span>
           </a>
           <a
@@ -91,7 +94,7 @@ const Footer = () => {
               loading="lazy"
             />
             <span data-v-066114c4 className="">
-              Profit/Loss
+              {getLanguage(LanguageKey.PROFIT_LOSS)}
             </span>
           </a>
           <a
@@ -110,7 +113,7 @@ const Footer = () => {
               loading="lazy"
             />
             <span data-v-066114c4 className="">
-              Reports
+              {getLanguage(LanguageKey.REPORTS)}
             </span>
           </a>
         </nav>

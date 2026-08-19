@@ -2,8 +2,11 @@ import { useParams } from "react-router-dom";
 
 import { useEffect, useState } from "react";
 import { useSingleProfitLoss } from "../../hooks/settledBets";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../const";
 
 const SingleProfitLoss = () => {
+  const { getLanguage } = useLanguage();
   const [backTotal, setBackTotal] = useState(0);
   const [layTotal, setLayTotal] = useState(0);
   const { marketId } = useParams();
@@ -111,7 +114,7 @@ const SingleProfitLoss = () => {
                         padding: "0 1rem",
                       }}
                     >
-                      <span>Selection</span>
+                      <span>{getLanguage(LanguageKey.SELECTION)}</span>
                       <span style={{ textTransform: "capitalize" }}>
                         {item?.nation}
                       </span>
@@ -162,7 +165,7 @@ const SingleProfitLoss = () => {
                         padding: "0 1rem",
                       }}
                     >
-                      <div>Bet ID</div>
+                      <div>{getLanguage(LanguageKey.BET_ID)}</div>
                       <div>{item?.betId}</div>
                     </div>
                     <div
@@ -172,7 +175,7 @@ const SingleProfitLoss = () => {
                         padding: "0 1rem",
                       }}
                     >
-                      <div>Placed Date</div>
+                      <div>{getLanguage(LanguageKey.PLACED_DATE)}</div>
                       <div>{item?.placeDate}</div>
                     </div>
 
@@ -208,7 +211,7 @@ const SingleProfitLoss = () => {
                                   borderTopLeftRadius: "0.5rem",
                                 }}
                               >
-                                Type
+                                {getLanguage(LanguageKey.TYPE)}
                               </th>
                               <th
                                 style={{
@@ -216,7 +219,7 @@ const SingleProfitLoss = () => {
                                   borderRight: "1px solid #E5E7EB",
                                 }}
                               >
-                                Odds
+                                {getLanguage(LanguageKey.ODDS)}
                               </th>
                               <th
                                 style={{
@@ -225,7 +228,7 @@ const SingleProfitLoss = () => {
                                   borderTopRightRadius: "0.5rem",
                                 }}
                               >
-                                Stake
+                                {getLanguage(LanguageKey.STAKE)}
                               </th>
                             </tr>
                           </thead>
@@ -280,7 +283,7 @@ const SingleProfitLoss = () => {
                   borderBottom: "1px dashed #ccc",
                 }}
               >
-                <div>Back Subtotal</div>
+                <div>{getLanguage(LanguageKey.BACK_SUBTOTAL)}</div>
                 <div
                   style={{
                     fontWeight: 700,
@@ -297,7 +300,7 @@ const SingleProfitLoss = () => {
                   borderBottom: "1px dashed #ccc",
                 }}
               >
-                <div>Lay subtotal</div>
+                <div>{getLanguage(LanguageKey.LAY_SUBTOTAL)}</div>
                 <div
                   style={{
                     fontWeight: 700,
@@ -314,7 +317,7 @@ const SingleProfitLoss = () => {
                   borderBottom: "1px dashed #ccc",
                 }}
               >
-                <div>Market Subtotal</div>
+                <div>{getLanguage(LanguageKey.MARKET_SUBTOTAL)}</div>
                 <div
                   style={{
                     fontWeight: 700,
@@ -331,7 +334,7 @@ const SingleProfitLoss = () => {
                   borderBottom: "1px dashed #ccc",
                 }}
               >
-                <div>Commission</div>
+                <div>{getLanguage(LanguageKey.COMMISSION)}</div>
                 <div style={{ fontWeight: 700 }}>₹ 0.0</div>
               </div>
               <div
@@ -342,7 +345,7 @@ const SingleProfitLoss = () => {
                 }}
               >
                 <div style={{ position: "relative", top: "3px" }}>
-                  Net Market Total
+                  {getLanguage(LanguageKey.NET_MARKET_TOTAL)}
                 </div>
                 <div
                   style={{

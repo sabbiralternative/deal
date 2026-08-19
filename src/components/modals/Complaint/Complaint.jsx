@@ -4,8 +4,11 @@ import toast from "react-hot-toast";
 import { AxiosSecure } from "../../../lib/AxiosSecure";
 import useCloseModalClickOutside from "../../../hooks/closeModal";
 import { useForm } from "react-hook-form";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const Complaint = ({ setComplaintId, method, complaintId }) => {
+  const { getLanguage } = useLanguage();
   const complaintRef = useRef();
   const { register, handleSubmit } = useForm();
 
@@ -37,7 +40,9 @@ const Complaint = ({ setComplaintId, method, complaintId }) => {
     <div className="Modal-Background  ">
       <div className="card-add-bank" ref={complaintRef}>
         <div className="card-header">
-          <h2 style={{ color: "black" }}>Raise Complaint</h2>
+          <h2 style={{ color: "black" }}>
+            {getLanguage(LanguageKey.RAISE_COMPLAINT)}
+          </h2>
           <div className="close-btn">
             <svg
               onClick={closeModal}
@@ -69,10 +74,10 @@ const Complaint = ({ setComplaintId, method, complaintId }) => {
 
               <div className="btn-box ">
                 <button onClick={closeModal} className="cancel-btn ">
-                  <span className="">Cancel</span>
+                  <span className="">{getLanguage(LanguageKey.CANCEL)}</span>
                 </button>
                 <button className="add-btn " type="submit">
-                  <span className="">Submit</span>
+                  <span className="">{getLanguage(LanguageKey.SUBMIT)}</span>
                 </button>
               </div>
             </form>

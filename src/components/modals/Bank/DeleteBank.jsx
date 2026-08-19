@@ -3,8 +3,11 @@ import toast from "react-hot-toast";
 import { useRef } from "react";
 import { AxiosSecure } from "../../../lib/AxiosSecure";
 import useCloseModalClickOutside from "../../../hooks/closeModal";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const DeleteBank = ({ setRemoveBank, removeBank, refetchBankData }) => {
+  const { getLanguage } = useLanguage();
   /* Close modal click outside */
   const deleteBankRef = useRef();
   useCloseModalClickOutside(deleteBankRef, () => {
@@ -37,7 +40,7 @@ const DeleteBank = ({ setRemoveBank, removeBank, refetchBankData }) => {
     <div className="Modal-Background  ng-trigger ng-trigger-inOutPaneAnimation ">
       <div className="card" ref={deleteBankRef}>
         <div className="card-header">
-          <h2>Remove Account</h2>
+          <h2>{getLanguage(LanguageKey.REMOVE_ACCOUNT)}</h2>
           <div className="close-btn">
             <svg
               onClick={() => setRemoveBank("")}
@@ -60,15 +63,20 @@ const DeleteBank = ({ setRemoveBank, removeBank, refetchBankData }) => {
           <div className="hr-line"></div>
           <div className="remove-text">
             <span className="">
-              Are you sure you want to remove this account
+              {getLanguage(
+                LanguageKey.ARE_YOU_SURE_YOU_WANT_TO_REMOVE_THIS_ACCOUNT,
+              )}
             </span>
           </div>
           <div onClick={() => setRemoveBank("")} className="remove-btn">
             <button className="cancel-btnn ">
-              <span className="">Cancel</span>
+              <span className="">{getLanguage(LanguageKey.CANCEL)}</span>
             </button>
             <button onClick={handleDeleteBank} className="confirm-btnn ">
-              <span className="">Yes, Remove</span>
+              <span className="">
+                {getLanguage(LanguageKey.YES)},{" "}
+                {getLanguage(LanguageKey.REMOVE)}
+              </span>
             </button>
           </div>
         </div>

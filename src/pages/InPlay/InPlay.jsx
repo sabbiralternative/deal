@@ -2,16 +2,19 @@ import moment from "moment";
 import { useGroupQuery } from "../../hooks/group";
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../const";
 
 const InPlay = () => {
+  const { getLanguage } = useLanguage();
   const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
   const { data } = useGroupQuery({ sportsType: 0 });
   const [tab, setTab] = useState("inPlay");
   const eventName = {
-    1: "Football",
-    2: "Tennis",
-    4: "Cricket",
+    1: getLanguage(LanguageKey.FOOTBALL),
+    2: getLanguage(LanguageKey.TENNIS),
+    4: getLanguage(LanguageKey.CRICKET),
   };
 
   const todayMoment = moment().startOf("day");
@@ -106,7 +109,9 @@ const InPlay = () => {
                         aria-controls="home"
                         aria-selected="true"
                       >
-                        <span data-v-1354c224>In-Play </span>
+                        <span data-v-1354c224>
+                          {getLanguage(LanguageKey.IN_PLAY)}{" "}
+                        </span>
                       </button>
                     </li>
                     <li
@@ -126,7 +131,9 @@ const InPlay = () => {
                         aria-controls="profile"
                         aria-selected="false"
                       >
-                        <span data-v-1354c224>Today</span>
+                        <span data-v-1354c224>
+                          {getLanguage(LanguageKey.TODAY)}
+                        </span>
                       </button>
                     </li>
                     <li
@@ -146,7 +153,9 @@ const InPlay = () => {
                         aria-controls="contact"
                         aria-selected="false"
                       >
-                        <span data-v-1354c224>Tomorrow</span>
+                        <span data-v-1354c224>
+                          {getLanguage(LanguageKey.TOMORROW)}
+                        </span>
                       </button>
                     </li>
                   </ul>
@@ -246,7 +255,9 @@ const InPlay = () => {
                                                 data-v-c9d3df59
                                                 className="inplay-animation-text"
                                               >
-                                                In-Play
+                                                {getLanguage(
+                                                  LanguageKey.IN_PLAY,
+                                                )}
                                               </span>
                                             ) : (
                                               <span

@@ -3,7 +3,10 @@ import toast from "react-hot-toast";
 import useCloseModalClickOutside from "../../hooks/closeModal";
 import images from "../../assets/images";
 import useDepositBreakdown from "../../hooks/depositBreakdown";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../const";
 const DepositModal = ({ setShowModal, setPaymentMethods, amount }) => {
+  const { getLanguage } = useLanguage();
   const { data: depositBreakdown } = useDepositBreakdown({
     amount: parseFloat(amount),
   });
@@ -36,7 +39,9 @@ const DepositModal = ({ setShowModal, setPaymentMethods, amount }) => {
         <div className="Modal-Background ng-tns-c159-13 ng-star-inserted">
           <div className="depositpop ng-tns-c159-13" ref={depositRef}>
             <div className="depositbreak ng-tns-c159-13">
-              <p className="ng-tns-c159-13">Deposit Breakdown</p>
+              <p className="ng-tns-c159-13">
+                {getLanguage(LanguageKey.DEPOSIT_BREAKDOWN)}
+              </p>
               <div
                 onClick={() => setShowModal(false)}
                 className="close-svg ng-tns-c159-13"
@@ -64,7 +69,9 @@ const DepositModal = ({ setShowModal, setPaymentMethods, amount }) => {
               <div className="balancebox ng-tns-c159-13">
                 <div className="damount ng-tns-c159-13">
                   <div className="balancetxt ng-tns-c159-13">
-                    <p className="ng-tns-c159-13">Deposit Amount</p>
+                    <p className="ng-tns-c159-13">
+                      {getLanguage(LanguageKey.DEPOSIT_AMOUNT)}
+                    </p>
                   </div>
 
                   <div className="amt ng-tns-c159-13">
@@ -93,7 +100,9 @@ const DepositModal = ({ setShowModal, setPaymentMethods, amount }) => {
 
                 <div className="line ng-tns-c159-13"></div>
                 <div className="totalamt ng-tns-c159-13">
-                  <p className="money ng-tns-c159-13">Total Amount Credited</p>
+                  <p className="money ng-tns-c159-13">
+                    {getLanguage(LanguageKey.TOTAL_AMOUNT_CREDITED)}
+                  </p>
                   <p className="doll1 ng-tns-c159-13">
                     ₹ {depositBreakdown?.totalAmount}
                   </p>
@@ -114,7 +123,7 @@ const DepositModal = ({ setShowModal, setPaymentMethods, amount }) => {
                 />
                 <div className="gift-input ng-tns-c159-13">
                   <p className="money ng-tns-c159-13">
-                    Amount credited In main wallet
+                    {getLanguage(LanguageKey.AMOUNT_CREDITED_IN_MAIN_WALLET)}
                   </p>
                   <p className="doll ng-tns-c159-13">
                     ₹ {depositBreakdown?.mainWallet}
@@ -143,7 +152,7 @@ const DepositModal = ({ setShowModal, setPaymentMethods, amount }) => {
                   />
                   <div className="gift-input ng-tns-c159-13">
                     <p className="money ng-tns-c159-13">
-                      Amount credited In bonus card
+                      {getLanguage(LanguageKey.AMOUNT_CREDITED_IN_BONUS_WALLET)}
                     </p>
                     <p className="doll ng-tns-c159-13">
                       ₹{depositBreakdown?.bonusWallet}
@@ -168,7 +177,7 @@ const DepositModal = ({ setShowModal, setPaymentMethods, amount }) => {
               >
                 <div className="madepay ng-tns-c159-13">
                   <button type="button" className="ng-tns-c159-13">
-                    Confirm
+                    {getLanguage(LanguageKey.CONFIRM)}
                   </button>
                 </div>
               </div>

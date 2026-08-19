@@ -20,14 +20,13 @@ import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import Search from "./Search";
 import Dropdown from "./Dropdown";
 import { useLogo } from "../../../context/ApiProvider";
-import { useLanguage } from "../../../context/LanguageProvider";
 import images from "../../../assets/images";
 import Language from "../../modals/Language";
-import { languageValue } from "../../../hooks/language";
 import { LanguageKey } from "../../../const";
+import useLanguage from "../../../hooks/use-language";
 
 const Header = () => {
-  const { valueByLanguage, setLanguage } = useLanguage();
+  const { getLanguage, setLanguage } = useLanguage();
   const [showLanguage, setShowLanguage] = useState(false);
   const navigate = useNavigate();
   const { logo } = useLogo();
@@ -137,7 +136,7 @@ const Header = () => {
                       onClick={() => dispatch(setShowLoginModal(true))}
                       className="loguser"
                     >
-                      {languageValue(valueByLanguage, LanguageKey.LOGIN)}
+                      {getLanguage(LanguageKey.LOGIN)}
                     </a>
                   </li>
 
@@ -147,7 +146,7 @@ const Header = () => {
                     >
                       <a className="loguser">
                         {" "}
-                        {languageValue(valueByLanguage, LanguageKey.REGISTER)}
+                        {getLanguage(LanguageKey.REGISTER)}
                       </a>
                     </button>
                   </li>

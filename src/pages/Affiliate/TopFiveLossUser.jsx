@@ -1,4 +1,8 @@
+import { LanguageKey } from "../../const";
+import useLanguage from "../../hooks/use-language";
+
 const TopFiveLossUser = () => {
+  const { getLanguage } = useLanguage();
   return (
     <div data-v-4c49d924 className="nw-affi-graph-wrapper">
       <div data-v-4c49d924 className="nw-affi-heading-sec">
@@ -7,7 +11,7 @@ const TopFiveLossUser = () => {
           data-v-4c49d924
           className="nw-affi-heading-text"
         >
-          Top 5 Loss User
+          {getLanguage(LanguageKey.TOP_FIVE_LOSS_USER)}
         </h3>
       </div>
       <div data-v-4c49d924 className="af-graph-img-sec">

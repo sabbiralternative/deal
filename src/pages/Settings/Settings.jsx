@@ -2,8 +2,11 @@ import { useForm } from "react-hook-form";
 import { useEditButtonValuesMutation } from "../../redux/features/events/events";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../const";
 
 const Settings = () => {
+  const { getLanguage } = useLanguage();
   const navigate = useNavigate();
   const [editButtonValue] = useEditButtonValuesMutation();
   const stakes = JSON.parse(localStorage.getItem("buttonValue"));
@@ -74,7 +77,7 @@ const Settings = () => {
                           <div className="row">
                             <div className="col-12">
                               <button type="submit" className="savestake_btns">
-                                save
+                                {getLanguage(LanguageKey.SAVE)}
                               </button>
                             </div>
                           </div>

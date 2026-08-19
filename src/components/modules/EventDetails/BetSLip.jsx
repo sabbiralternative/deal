@@ -19,8 +19,11 @@ import {
   handleDecreasePrice,
   handleIncreasePrice,
 } from "../../../utils/editBetSlipPrice";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const BetSLip = ({ currentPlaceBetEvent }) => {
+  const { getLanguage } = useLanguage();
   const { closePopupForForever } = useSelector((state) => state.global);
   const [isCashOut, setIsCashOut] = useState(false);
   const [profit, setProfit] = useState(0);
@@ -313,7 +316,7 @@ const BetSLip = ({ currentPlaceBetEvent }) => {
                     }
                     className="btn btn-secondary m-l-5 m-b-5 btn-min-stake"
                   >
-                    min stake
+                    {getLanguage(LanguageKey.MIN)}
                   </button>
                   <button
                     style={{ minWidth: "calc(25% - 1px)" }}
@@ -331,7 +334,7 @@ const BetSLip = ({ currentPlaceBetEvent }) => {
                     }
                     className="btn btn-secondary m-l-5 m-b-5 btn-max-stake"
                   >
-                    max stake
+                    {getLanguage(LanguageKey.MAX)}
                   </button>
 
                   <button
@@ -341,7 +344,7 @@ const BetSLip = ({ currentPlaceBetEvent }) => {
                     }}
                     className="btn btn-secondary m-l-5 m-b-5 clear-stake"
                   >
-                    clear
+                    {getLanguage(LanguageKey.CLEAR)}
                   </button>
                 </td>
               </tr>
@@ -361,7 +364,7 @@ const BetSLip = ({ currentPlaceBetEvent }) => {
               type="button"
               className="btn btn-sm btn-danger"
             >
-              <i data-feather="trash-2" /> remove
+              <i data-feather="trash-2" /> {getLanguage(LanguageKey.CANCEL)}
             </button>
             <button
               onClick={handleOrderBets}
@@ -369,7 +372,7 @@ const BetSLip = ({ currentPlaceBetEvent }) => {
               className="btn btn-sm btn-success"
             >
               {" "}
-              place bet{" "}
+              {getLanguage(LanguageKey.PLACE_BET)}{" "}
             </button>
           </div>
         </form>

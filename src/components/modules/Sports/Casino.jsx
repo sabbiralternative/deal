@@ -4,8 +4,11 @@ import Tab2 from "./Tab2.jsx";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useIndexQuery } from "../../../hooks";
+import useLanguage from "../../../hooks/use-language.js";
+import { LanguageKey } from "../../../const/index.js";
 
 const Casino = () => {
+  const { getLanguage } = useLanguage();
   const { token } = useSelector((state) => state.auth);
   const { data } = useIndexQuery({
     type: "99_all_casino",
@@ -109,7 +112,7 @@ const Casino = () => {
                               className="img-fluid game-icon-img"
                               src="/assets/icon-99998.svg"
                             />{" "}
-                            Casino
+                            {getLanguage(LanguageKey.CASINO)}
                           </span>
                         </div>
                         <div className="col-8">

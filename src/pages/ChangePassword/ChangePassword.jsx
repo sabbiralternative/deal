@@ -2,8 +2,11 @@ import { useNavigate } from "react-router-dom";
 import { useChangePasswordMutation } from "../../redux/features/auth/authApi";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../const";
 
 const ChangePassword = () => {
+  const { getLanguage } = useLanguage();
   // const [showPassword, setShowPassword] = useState(false);
   // const [showNewPassword, setShowNewPassword] = useState(false);
   // const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -50,7 +53,7 @@ const ChangePassword = () => {
                         <div className="col-md-6">
                           <div className="row mb-lg-3 mt-lg-2 align-items-center">
                             <label className="col-md-3 col-lg-3 col-form-label text-lg-end">
-                              Current Password :
+                              {getLanguage(LanguageKey.OLD_PASSWORD)} :
                             </label>
                             <div className="col-md-9 col-lg-9">
                               <input
@@ -65,7 +68,7 @@ const ChangePassword = () => {
                               htmlFor="newPassword"
                               className="col-md-3 col-lg-3 col-form-label text-lg-end"
                             >
-                              New Password :
+                              {getLanguage(LanguageKey.NEW_PASSWORD)}:
                             </label>
                             <div className="col-md-9 col-lg-9">
                               <input
@@ -80,7 +83,7 @@ const ChangePassword = () => {
                               htmlFor="renewPassword"
                               className="col-md-3 col-lg-3 col-form-label text-lg-end"
                             >
-                              Re-enter New Password :
+                              {getLanguage(LanguageKey.CONFIRM_PASSWORD)} :
                             </label>
                             <div className="col-md-9 col-lg-9">
                               <input
@@ -109,7 +112,7 @@ const ChangePassword = () => {
                           </div> */}
                           <div className="row">
                             <button type="submit" className="btn btn_cp">
-                              Change Password
+                              {getLanguage(LanguageKey.CHANGE_PASSWORD)}
                             </button>
                           </div>
                         </div>

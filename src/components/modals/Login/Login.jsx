@@ -14,12 +14,11 @@ import {
 } from "../../../redux/features/global/globalSlice";
 import toast from "react-hot-toast";
 import useCloseModalClickOutside from "../../../hooks/closeModal";
-import { useLanguage } from "../../../context/LanguageProvider";
-import { languageValue } from "../../../hooks/language";
 import { LanguageKey } from "../../../const";
+import useLanguage from "../../../hooks/use-language";
 
 const Login = () => {
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const ref = useRef(null);
   const { closePopupForForever } = useSelector((state) => state.global);
   const navigate = useNavigate();
@@ -163,10 +162,7 @@ const Login = () => {
                       <img className="img-fluid" src={logo} />
                     </div>
                     <div className="modal_login">
-                      <h2>
-                        {" "}
-                        {languageValue(valueByLanguage, LanguageKey.LOGIN)}
-                      </h2>
+                      <h2> {getLanguage(LanguageKey.LOGIN)}</h2>
                       <form
                         onSubmit={handleSubmit(onSubmit)}
                         className="ng-untouched ng-pristine ng-invalid"
@@ -214,18 +210,18 @@ const Login = () => {
                           className="text-end text-white cursor-pointer"
                           style={{ textDecoration: "underline" }}
                         >
-                          Forgot Password?
+                          {getLanguage(LanguageKey.FORGOT_PASSWORD)}?
                         </p>
 
                         <button type="submit" className="btn_login mb-2">
-                          {languageValue(valueByLanguage, LanguageKey.LOGIN)}
+                          {getLanguage(LanguageKey.LOGIN)}
                         </button>
                         <button
                           onClick={loginWithDemo}
                           type="button"
                           className="btn_login mt-0"
                         >
-                          login with demo
+                          {getLanguage(LanguageKey.DEMO_LOGIN)}
                         </button>
                         <div className="text-center" style={{ color: "white" }}>
                           Don&apos;t have an account?{" "}
@@ -240,10 +236,7 @@ const Login = () => {
                             }}
                             type="button"
                           >
-                            {languageValue(
-                              valueByLanguage,
-                              LanguageKey.REGISTER,
-                            )}
+                            {getLanguage(LanguageKey.REGISTER)}
                           </button>
                         </div>
                       </form>

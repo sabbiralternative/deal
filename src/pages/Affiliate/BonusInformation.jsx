@@ -2,8 +2,11 @@ import { Fragment, useState } from "react";
 import HowToGetBonus from "../../components/modals/Affiliate/HowToGetBonus";
 import CommissionInfo from "../../components/modals/Affiliate/CommissionInfo";
 import images from "../../assets/images";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../const";
 
 const BonusInformation = () => {
+  const { getLanguage } = useLanguage();
   const [openGetBonusModal, setOpenGetBonusModal] = useState(false);
   const [openCommissionModal, setOpenCommissionModal] = useState(false);
   return (
@@ -27,7 +30,7 @@ const BonusInformation = () => {
             className="nw-affi-heading-text"
             data-v-4c49d924
           >
-            Bonus Information
+            {getLanguage(LanguageKey.BONUS_INFORMATION)}
           </h3>
         </div>
         <div className="nw-affi-how-to-get-bonus-content" data-v-4c49d924>
@@ -39,7 +42,7 @@ const BonusInformation = () => {
             data-v-4c49d924
           >
             <img src={images.affiBonus1} alt="affi-bonus-1" data-v-4c49d924 />
-            <p data-v-4c49d924>How to get bonus?</p>
+            <p data-v-4c49d924>{getLanguage(LanguageKey.HOW_TO_GET_BONUS)}?</p>
           </div>
           <div
             onClick={() => setOpenCommissionModal(true)}
@@ -49,7 +52,7 @@ const BonusInformation = () => {
             data-v-4c49d924
           >
             <img src={images.affiBonus2} alt="affi-bonus-2" data-v-4c49d924 />
-            <p data-v-4c49d924>Commission Info</p>
+            <p data-v-4c49d924>{getLanguage(LanguageKey.COMMISSION_INFO)}</p>
           </div>
         </div>
       </div>

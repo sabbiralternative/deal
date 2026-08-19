@@ -3,7 +3,10 @@ import "./app-only-bonus.css";
 import { useBonusMutation, useBonusQuery } from "../../hooks/bonus";
 import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../const";
 const AppOnlyBonus = () => {
+  const { getLanguage } = useLanguage();
   const bonusMessage = [
     "Lossback can be claimed only if you have a net loss on the specified date. If your total bets result in any profit, you are not eligible for this lossback bonus.Loss is calculated after all wins, losses, and settlements for that date.",
     "लॉसबैक का दावा केवल उसी स्थिति में किया जा सकता है जब निर्धारित तिथि पर आपका कुल शुद्ध नुकसान (नेट लॉस) हो। यदि उस दिन आपकी कुल बेटिंग का परिणाम किसी भी प्रकार का मुनाफ़ा (प्रॉफिट) दिखाता है, तो आप इस लॉसबैक बोनस के लिए पात्र नहीं होंगे। लॉस की गणना उस तिथि की सभी जीत, हार और सेटलमेंट को जोड़ने के बाद की जाएगी।",
@@ -98,19 +101,22 @@ const AppOnlyBonus = () => {
                 <div key={item?.lossback_bonus_id} className="info-card">
                   <div className="info-card-inner">
                     <div>
-                      <h4> Title :</h4>
+                      <h4> {getLanguage(LanguageKey.TITLE)} :</h4>
                       <p>{item?.title}</p>
                     </div>
                     <div>
-                      <h4> Minimum Loss Amount :</h4>
+                      <h4> {getLanguage(LanguageKey.MINIMUM_LOSS_AMOUNT)} :</h4>
                       <p> {item?.minimum_loss_amount}</p>
                     </div>
                     <div>
-                      <h4> Maximum Bonus Amount :</h4>
+                      <h4>
+                        {" "}
+                        {getLanguage(LanguageKey.MAXIMUM_BONUS_AMOUNT)} :
+                      </h4>
                       <p> {item?.maximum_bonus_amount}</p>
                     </div>
                     <div>
-                      <h4> Status :</h4>
+                      <h4> {getLanguage(LanguageKey.STATUS)} :</h4>
                       <p
                         className={`${
                           item?.status === "ACTIVE"
@@ -124,7 +130,7 @@ const AppOnlyBonus = () => {
                       </p>
                     </div>
                     <div>
-                      <h4> Expiry :</h4>
+                      <h4> {getLanguage(LanguageKey.EXPIRY)} :</h4>
                       <p> {item?.expires_at}</p>
                     </div>
                   </div>
@@ -133,7 +139,7 @@ const AppOnlyBonus = () => {
                       onClick={() => handleClaimBonus(item?.lossback_bonus_id)}
                       className="primary-btn"
                     >
-                      Claim
+                      {getLanguage(LanguageKey.CLAIM)}
                     </button>
                   )}
                 </div>
@@ -156,7 +162,7 @@ const AppOnlyBonus = () => {
             </div>
 
             <div className="text-center">
-              <h3>No Loss Back Claims Available!</h3>
+              <h3>{getLanguage(LanguageKey.NO_LOSS_BACK_CLAIMS_AVAILABLE)}!</h3>
               <p>
                 Continue playing to earn loss back bonuses! New claims are
                 typically processed on Tuesday, Wednesday, and Thursday.
@@ -167,7 +173,7 @@ const AppOnlyBonus = () => {
               <div className="info-top">
                 <div className="info-icon">💡</div>
                 <div>
-                  <h4>How Loss Back Works</h4>
+                  <h4>{getLanguage(LanguageKey.HOW_LOSS_BACK_WORKS)}</h4>
                   <p>
                     When you experience losses while playing, a percentage gets
                     credited back to your main balance automatically. The more
@@ -179,21 +185,21 @@ const AppOnlyBonus = () => {
               <div className="info-steps">
                 <div className="step">
                   <div className="step-icon">▶</div>
-                  <p>Play Games</p>
+                  <p>{getLanguage(LanguageKey.PLAY_GAMES)}</p>
                 </div>
                 <div className="step">
                   <div className="step-icon">⏱</div>
-                  <p>Auto Calculate</p>
+                  <p>{getLanguage(LanguageKey.AUTO_CALCULATE)}</p>
                 </div>
                 <div className="step">
                   <div className="step-icon">💰</div>
-                  <p>Get Rewarded</p>
+                  <p>{getLanguage(LanguageKey.GET_REWARDED)}</p>
                 </div>
               </div>
             </div>
 
             <button onClick={() => navigate("/")} className="primary-btn">
-              Continue Playing
+              {getLanguage(LanguageKey.CONTINUE_PLAYING)}
             </button>
           </div>
         )}

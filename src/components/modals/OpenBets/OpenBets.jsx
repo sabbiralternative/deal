@@ -5,8 +5,11 @@ import { useGetEventDetailsQuery } from "../../../redux/features/events/events";
 import toast from "react-hot-toast";
 import { useRef } from "react";
 import useCloseModalClickOutside from "../../../hooks/closeModal";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const OpenBets = ({ setShowOpenBets }) => {
+  const { getLanguage } = useLanguage();
   const ref = useRef();
   const { pathname } = useLocation();
   const navigate = useNavigate();
@@ -106,7 +109,7 @@ const OpenBets = ({ setShowOpenBets }) => {
       <div className="modal-dialog openbets-modal-list">
         <div className="modal-content" ref={ref}>
           <div className="modal-header headerTheme">
-            <h4>Open Bets</h4>
+            <h4>{getLanguage(LanguageKey.OPEN_BETS)}</h4>
             <button
               onClick={() => setShowOpenBets(false)}
               className="btn-close"
@@ -196,7 +199,12 @@ const OpenBets = ({ setShowOpenBets }) => {
                                         </svg>
                                       </div>
                                       <div className="noData-content">
-                                        <h3>No Records Found!</h3>
+                                        <h3>
+                                          {getLanguage(
+                                            LanguageKey.NO_RECORD_FOUND,
+                                          )}
+                                          !
+                                        </h3>
                                       </div>
                                     </section>
                                   </td>
@@ -291,7 +299,9 @@ const OpenBets = ({ setShowOpenBets }) => {
                                                   color: "black",
                                                 }}
                                               >
-                                                Cashout
+                                                {getLanguage(
+                                                  LanguageKey.CASHOUT,
+                                                )}
                                               </span>
                                               {price && (
                                                 <span
@@ -322,7 +332,8 @@ const OpenBets = ({ setShowOpenBets }) => {
                                         {bet?.marketName}: {bet?.nation}
                                       </div>
                                       <div style={{ textAlign: "start" }}>
-                                        Placed : {bet?.placeDate}
+                                        {getLanguage(LanguageKey.PLACED_DATE)} :{" "}
+                                        {bet?.placeDate}
                                       </div>
                                     </td>
                                     {/* <td> {bet?.userRate}</td>

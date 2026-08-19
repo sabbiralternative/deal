@@ -13,12 +13,11 @@ import {
 } from "../../../redux/features/global/globalSlice";
 import toast from "react-hot-toast";
 import useCloseModalClickOutside from "../../../hooks/closeModal";
-import { useLanguage } from "../../../context/LanguageProvider";
-import { languageValue } from "../../../hooks/language";
 import { LanguageKey } from "../../../const";
+import useLanguage from "../../../hooks/use-language";
 
 const ForgotPassword = () => {
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const ref = useRef();
   const { logo } = useLogo();
   const [timer, setTimer] = useState(null);
@@ -129,7 +128,7 @@ const ForgotPassword = () => {
                       <img className="img-fluid" src={logo} />
                     </div>
                     <div className="modal_login">
-                      <h2>Forgot Password</h2>
+                      <h2>{getLanguage(LanguageKey.FORGOT_PASSWORD)}</h2>
                       <form
                         onSubmit={handleSubmit(onSubmit)}
                         className="ng-untouched ng-pristine ng-invalid"
@@ -145,7 +144,7 @@ const ForgotPassword = () => {
                           <div className="input-group-prepend">
                             {timer ? (
                               <button type="button" style={{ color: "white" }}>
-                                Retry in {timer}
+                                {getLanguage(LanguageKey.RETRY_IN)} {timer}
                               </button>
                             ) : (
                               <button
@@ -154,7 +153,7 @@ const ForgotPassword = () => {
                                 type="button"
                                 disabled={Settings.otp && mobile?.length < 10}
                               >
-                                Get OTP
+                                {getLanguage(LanguageKey.GET_OTP)}
                               </button>
                             )}
                           </div>
@@ -210,10 +209,7 @@ const ForgotPassword = () => {
                         </div>
 
                         <button type="submit" className="btn_login mb-2">
-                          {languageValue(
-                            valueByLanguage,
-                            LanguageKey.CHANGE_PASSWORD,
-                          )}
+                          {getLanguage(LanguageKey.CHANGE_PASSWORD)}
                         </button>
                       </form>
                     </div>

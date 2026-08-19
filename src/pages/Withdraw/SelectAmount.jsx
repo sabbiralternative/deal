@@ -1,7 +1,10 @@
 import images from "../../assets/images";
+import { LanguageKey } from "../../const";
+import useLanguage from "../../hooks/use-language";
 import useWithdrawBreakdown from "../../hooks/withdrawBreakdown";
 
 const SelectAmount = ({ setAmount, amount, setShowBankAccount }) => {
+  const { getLanguage } = useLanguage();
   const { data: withdrawBreakdown } = useWithdrawBreakdown();
 
   return (
@@ -54,13 +57,15 @@ const SelectAmount = ({ setAmount, amount, setShowBankAccount }) => {
               ₹ {withdrawBreakdown?.mainWallet}
             </span>
             <div className="wallet-txt ">
-              <p className="">Main Wallet</p>
+              <p className="">{getLanguage(LanguageKey.MAIN_WALLET)}</p>
             </div>
           </div>
         </div>
 
         <div className="amount-input bg-primary-light">
-          <p className="amount-text ">Please enter the amount to withdraw</p>
+          <p className="amount-text ">
+            {getLanguage(LanguageKey.PLEASE_ENTER_THE_AMOUNT_TO_WITHDRAW)}
+          </p>
           <form
             style={{
               width: "100%",
@@ -85,7 +90,8 @@ const SelectAmount = ({ setAmount, amount, setShowBankAccount }) => {
                       placeholder="₹ Amount"
                     />
                     <p className="deposit-input-min-text ">
-                      minimum ₹{withdrawBreakdown?.minimumWithdraw}
+                      {getLanguage(LanguageKey.MIN)} ₹
+                      {withdrawBreakdown?.minimumWithdraw}
                     </p>
                   </div>
                 </div>
@@ -101,7 +107,7 @@ const SelectAmount = ({ setAmount, amount, setShowBankAccount }) => {
           onClick={() => setShowBankAccount(true)}
           className="btnn1 "
         >
-          Continue to Select Account
+          {getLanguage(LanguageKey.CONTINUE_TO_SELECT_ACCOUNT)}
         </button>
       </div>
     </div>

@@ -7,8 +7,11 @@ import {
 import { useNavigate } from "react-router-dom";
 import "./OpenBets.css";
 import { useCurrentBets } from "../../hooks/currentBets";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../const";
 
 const OpenBets = () => {
+  const { getLanguage } = useLanguage();
   const navigate = useNavigate();
   const { data: myBets } = useCurrentBets();
   const [openBets, setOpenBets] = useState(true);
@@ -31,7 +34,9 @@ const OpenBets = () => {
             id="matched_1"
             className="openbets-toggle"
           >
-            <span className="openbets-toggle-label">Open Bets</span>
+            <span className="openbets-toggle-label">
+              {getLanguage(LanguageKey.OPEN_BETS)}
+            </span>
             <div className="openbets-toggle-icon">
               {openBets ? (
                 <MdOutlineKeyboardArrowUp size={20} />
@@ -85,7 +90,7 @@ const OpenBets = () => {
                       id={`tiem_Date_of_order_0_${i}`}
                       className="openbets-card-date"
                     >
-                      PLACED - {bet?.placeDate}
+                      {getLanguage(LanguageKey.PLACE_DATE)} - {bet?.placeDate}
                     </div>
                   </div>
                 ))}
@@ -96,7 +101,9 @@ const OpenBets = () => {
           {/* Empty State */}
           {openBets && myBets?.length === 0 && orderedBets?.length === 0 && (
             <div className="openbets-empty-wrap">
-              <div className="openbets-empty">You have no Open Bets.</div>
+              <div className="openbets-empty">
+                {getLanguage(LanguageKey.YOU_HAVE_NO_OPEN_BETS)}.
+              </div>
             </div>
           )}
         </div>

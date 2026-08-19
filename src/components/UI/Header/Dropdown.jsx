@@ -4,12 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../redux/features/auth/authSlice";
 import { Fragment, useRef } from "react";
 import useCloseModalClickOutside from "../../../hooks/closeModal";
-import { useLanguage } from "../../../context/LanguageProvider";
-import { languageValue } from "../../../hooks/language";
 import { LanguageKey } from "../../../const";
+import useLanguage from "../../../hooks/use-language";
 
 const Dropdown = ({ setOpen }) => {
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const ref = useRef();
   const dispatch = useDispatch();
   const { closePopupForForever } = useSelector((state) => state?.global);
@@ -17,42 +16,62 @@ const Dropdown = ({ setOpen }) => {
   useCloseModalClickOutside(ref, () => setOpen(false));
   const links = [
     {
-      label: languageValue(valueByLanguage, LanguageKey.DEPOSIT),
+      label: getLanguage(LanguageKey.DEPOSIT),
       href: "/deposit",
       show: true,
     },
     {
-      label: languageValue(valueByLanguage, LanguageKey.WITHDRAW),
+      label: getLanguage(LanguageKey.WITHDRAW),
       href: "/withdraw",
       show: true,
     },
     {
-      label: "Deposit Withdraw Report",
+      label: getLanguage(LanguageKey.DEPOSIT_WITHDRAW_REPORT),
       href: "/deposit-withdraw-report",
       show: true,
     },
-    { label: "Betting Profit Loss", href: "/betting-profit-loss", show: true },
     {
-      label: languageValue(valueByLanguage, LanguageKey.MY_BANK_DETAILS),
+      label: getLanguage(LanguageKey.BETTING_PROFIT_AND_LOSS),
+      href: "/betting-profit-loss",
+      show: true,
+    },
+    {
+      label: getLanguage(LanguageKey.MY_BANK_DETAILS),
       href: "/my-bank-details",
       show: true,
     },
-    { label: "Bonus Statement", href: "/bonus-statement", show: true },
     {
-      label: "Affiliate",
+      label: getLanguage(LanguageKey.BONUS_STATEMENT),
+      href: "/bonus-statement",
+      show: true,
+    },
+    {
+      label: getLanguage(LanguageKey.AFFILIATE),
       href: "/affiliate",
       show: Settings?.referral === true,
     },
-    { label: "Promos & Bonus", href: "/promotions", show: true },
-    { label: "Lossback Bonus", href: "/lossback-bonus", show: true },
     {
-      label: "App Only Bonus",
+      label: getLanguage(LanguageKey.PROMOTION_AND_BONUSES),
+      href: "/promotions",
+      show: true,
+    },
+    {
+      label: getLanguage(LanguageKey.LOSSBACK_BONUS),
+      href: "/lossback-bonus",
+      show: true,
+    },
+    {
+      label: getLanguage(LanguageKey.APP_ONLY_BONUS),
       href: "/app-only-bonus",
       show: closePopupForForever ? true : false,
     },
-    { label: "Stake Settings", href: "/settings", show: true },
     {
-      label: languageValue(valueByLanguage, LanguageKey.CHANGE_PASSWORD),
+      label: getLanguage(LanguageKey.EDIT_STAKE),
+      href: "/settings",
+      show: true,
+    },
+    {
+      label: getLanguage(LanguageKey.CHANGE_PASSWORD),
       href: "/change-password",
       show: true,
     },
@@ -148,7 +167,7 @@ const Dropdown = ({ setOpen }) => {
               background: "transparent",
             }}
           >
-            Logout
+            {getLanguage(LanguageKey.LOGOUT)}
           </a>
         </li>
       </ul>

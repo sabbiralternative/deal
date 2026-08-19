@@ -6,8 +6,11 @@ import { jwtDecode } from "jwt-decode";
 import useCloseModalClickOutside from "../../../hooks/closeModal";
 import { useDispatch } from "react-redux";
 import { setAddBank } from "../../../redux/features/global/globalSlice";
+import useLanguage from "../../../hooks/use-language";
+import { LanguageKey } from "../../../const";
 
 const AddBank = ({ refetchBankData }) => {
+  const { getLanguage } = useLanguage();
   /* Handle close modal click outside */
   const dispatch = useDispatch();
   const [mobile, setMobile] = useState(null);
@@ -149,7 +152,9 @@ const AddBank = ({ refetchBankData }) => {
     <div className="Modal-Background  ">
       <div className="card-add-bank" ref={addBankRef}>
         <div className="card-header">
-          <h2 style={{ color: "black" }}>Add Bank Account</h2>
+          <h2 style={{ color: "black" }}>
+            {getLanguage(LanguageKey.ADD_BANK_ACCOUNT)}
+          </h2>
           <div className="close-btn">
             <svg
               onClick={closeModal}
@@ -254,7 +259,7 @@ const AddBank = ({ refetchBankData }) => {
                         justifyContent: "center",
                       }}
                     >
-                      Retry in {timer}
+                      {getLanguage(LanguageKey.RETRY_IN)} {timer}
                     </div>
                   ) : (
                     <div
@@ -290,7 +295,7 @@ const AddBank = ({ refetchBankData }) => {
                         }}
                         type="button"
                       >
-                        Get OTP Message
+                        {getLanguage(LanguageKey.GET_OTP_ON_MESSAGE)}
                       </button>
                     </div>
                   )}
@@ -317,14 +322,16 @@ const AddBank = ({ refetchBankData }) => {
 
               <div className="btn-box ">
                 <button onClick={closeModal} className="cancel-btn ">
-                  <span className="">Cancel</span>
+                  <span className="">{getLanguage(LanguageKey.CANCEL)}</span>
                 </button>
                 <button
                   disabled={!isFormValid}
                   className="add-btn "
                   type="submit"
                 >
-                  <span className="">Add Bank Account</span>
+                  <span className="">
+                    {getLanguage(LanguageKey.ADD_BANK_ACCOUNT)}
+                  </span>
                 </button>
               </div>
             </form>

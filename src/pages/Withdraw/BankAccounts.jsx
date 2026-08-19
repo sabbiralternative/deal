@@ -4,6 +4,8 @@ import DeleteBank from "../../components/modals/Bank/DeleteBank";
 import { useDispatch, useSelector } from "react-redux";
 import { setAddBank } from "../../redux/features/global/globalSlice";
 import images from "../../assets/images";
+import useLanguage from "../../hooks/use-language";
+import { LanguageKey } from "../../const";
 
 const BankAccounts = ({
   bankData,
@@ -14,6 +16,7 @@ const BankAccounts = ({
   setBank,
   bank,
 }) => {
+  const { getLanguage } = useLanguage();
   const dispatch = useDispatch();
   const { addBank } = useSelector((state) => state.global);
   const [removeBank, setRemoveBank] = useState("");
@@ -42,7 +45,9 @@ const BankAccounts = ({
             className="back-nav-bc "
           >
             <img loading="lazy" src={images.backArrow} alt="" className="" />
-            <span className="back-nav-title-bc ellipsis ">Back to Amount</span>
+            <span className="back-nav-title-bc ellipsis ">
+              {getLanguage(LanguageKey.BACK_TO_AMOUNT)}
+            </span>
           </div>
 
           <div
@@ -156,7 +161,9 @@ const BankAccounts = ({
                 alt=""
                 className=""
               />
-              <span className="">Add Bank Account</span>
+              <span className="">
+                {getLanguage(LanguageKey.ADD_BANK_ACCOUNT)}
+              </span>
             </button>
             <button
               onClick={() => {
@@ -167,7 +174,7 @@ const BankAccounts = ({
               className="process-btn "
               disabled={!bank}
             >
-              <span className="">Proceed</span>
+              <span className="">{getLanguage(LanguageKey.PROCEED)}</span>
             </button>
           </div>
 

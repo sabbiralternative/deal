@@ -11,13 +11,12 @@ import {
 import WarningCondition from "../../shared/WarningCondition/WarningCondition";
 import useCloseModalClickOutside from "../../../hooks/closeModal";
 import Search from "../Header/Search";
-import { useLanguage } from "../../../context/LanguageProvider";
-import { languageValue } from "../../../hooks/language";
 import { LanguageKey } from "../../../const";
 import { eventNameList } from "../../../static/event-name-list";
+import useLanguage from "../../../hooks/use-language";
 
 const LeftSidebar = () => {
-  const { valueByLanguage } = useLanguage();
+  const { getLanguage } = useLanguage();
   const location = useLocation();
   const ref = useRef();
   const { logo } = useLogo();
@@ -95,13 +94,15 @@ const LeftSidebar = () => {
           <ul className="sidebar-nav">
             {token && (
               <li className="account_balance">
-                <h2>account</h2>
+                <h2>{getLanguage(LanguageKey.ACCOUNT)}</h2>
                 <div>
                   <span>
-                    balance <em>{data?.availBalance}</em>
+                    {getLanguage(LanguageKey.BALANCE)}{" "}
+                    <em>{data?.availBalance}</em>
                   </span>
                   <span tabIndex={0}>
-                    Exposure <em>{data?.deductedExposure}</em>
+                    {getLanguage(LanguageKey.EXPOSURE)}{" "}
+                    <em>{data?.deductedExposure}</em>
                   </span>
                 </div>
               </li>
@@ -112,7 +113,7 @@ const LeftSidebar = () => {
               to="#sidemenus"
               className="main_menu_title"
             >
-              live
+              {getLanguage(LanguageKey.LIVE)}
               <i data-feather="chevron-down" />
             </h2>
             <div id="sidemenus" className="collapse show">
@@ -125,7 +126,7 @@ const LeftSidebar = () => {
                   <img className="img-fluid" src="/assets/icon-4.svg" />
                   <span className="align-middle">
                     {" "}
-                    {languageValue(valueByLanguage, LanguageKey.CRICKET)}
+                    {getLanguage(LanguageKey.CRICKET)}
                   </span>
                 </Link>
               </li>
@@ -138,7 +139,7 @@ const LeftSidebar = () => {
                   <img className="img-fluid" src="/assets/icon-1.svg" />
                   <span className="align-middle">
                     {" "}
-                    {languageValue(valueByLanguage, LanguageKey.FOOTBALL)}
+                    {getLanguage(LanguageKey.FOOTBALL)}
                   </span>
                 </Link>
               </li>
@@ -151,7 +152,7 @@ const LeftSidebar = () => {
                   <img className="img-fluid" src="/assets/icon-2.svg" />
                   <span className="align-middle">
                     {" "}
-                    {languageValue(valueByLanguage, LanguageKey.TENNIS)}
+                    {getLanguage(LanguageKey.TENNIS)}
                   </span>
                 </Link>
               </li>
@@ -162,7 +163,9 @@ const LeftSidebar = () => {
                   to="/sports/6"
                 >
                   <img className="img-fluid" src="/assets/icon-2378961.svg" />
-                  <span className="align-middle">Politics</span>
+                  <span className="align-middle">
+                    {getLanguage(LanguageKey.POLITICS)}
+                  </span>
                 </Link>
 
                 <ul className="nav-content collapse" id="collapse3"></ul>
@@ -173,7 +176,9 @@ const LeftSidebar = () => {
                   className="sidebar-link"
                 >
                   <img className="img-fluid" src="/assets/icon-casino.svg" />
-                  <span className="align-middle">Casino</span>
+                  <span className="align-middle">
+                    {getLanguage(LanguageKey.CASINO)}
+                  </span>
                 </Link>
               </li>
               <li className="sidebar-item">
@@ -182,7 +187,9 @@ const LeftSidebar = () => {
                   className="sidebar-link"
                 >
                   <img className="img-fluid" src="/assets/icon-99991.svg" />
-                  <span className="align-middle">Sports book</span>
+                  <span className="align-middle">
+                    {getLanguage(LanguageKey.SPORTSBOOK)}
+                  </span>
                 </a>
               </li>
               <li className="sidebar-item">
@@ -194,7 +201,7 @@ const LeftSidebar = () => {
                   <img className="img-fluid" src="/assets/icon-7.svg" />
                   <span className="align-middle">
                     {" "}
-                    {languageValue(valueByLanguage, LanguageKey.HORSE)}
+                    {getLanguage(LanguageKey.HORSE)}
                   </span>
                 </Link>
               </li>
@@ -207,7 +214,7 @@ const LeftSidebar = () => {
                   <img className="img-fluid" src="/assets/icon-4339.svg" />
                   <span className="align-middle">
                     {" "}
-                    {languageValue(valueByLanguage, LanguageKey.GREYHOUND)}
+                    {getLanguage(LanguageKey.GREYHOUND)}
                   </span>
                 </Link>
               </li>
@@ -221,7 +228,7 @@ const LeftSidebar = () => {
                   <img className="img-fluid" src="/assets/icon-99994.svg" />
                   <span className="align-middle">
                     {" "}
-                    {languageValue(valueByLanguage, LanguageKey.KABADDI)}
+                    {getLanguage(LanguageKey.KABADDI)}
                   </span>
                 </Link>
               </li>
@@ -234,7 +241,10 @@ const LeftSidebar = () => {
                       to={`/sports/${item.id}`}
                     >
                       <img className="img-fluid" src={item.image} />
-                      <span className="align-middle"> {item.name}</span>
+                      <span className="align-middle">
+                        {" "}
+                        {getLanguage(item.name)}
+                      </span>
                     </Link>
                   </li>
                 );
